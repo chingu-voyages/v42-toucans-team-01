@@ -1,14 +1,48 @@
+/*
+-----------------------------------------------------------------------------------------------------------------------
+PUBLIC VARIABLES:
+
+chuckWrapper.numItems - number of jokes to fetch (default 1)
+chuckWrapper.repeat - whether to allow repeat jokes (default false)
+chuckWrapper.categories - array of joke categories (empty until getCategories() is called and awaited) (default [])
+chuckWrapper.currentJokes - array of jokes to display (default [])
+-----------------------------------------------------------------------------------------------------------------------
+PUBLIC METHODS (coroutines):
+
+chuckWrapper.getCategories() - fetches categories from API and stores them in chuckWrapper.categories
+chuckWrapper.getJokes() - fetches {numItems} of jokes from API and stores them in chuckWrapper.currentJokes
+chuckWrapper.getJokesByCategory(category) - fetches {numItems} of jokes from API with the given category and stores
+                                            them in chuckWrapper.currentJokes
+chuckWrapper.getJokesByQuery(query) - fetches all jokes from API that match the given query and stores them in
+                                      chuckWrapper.currentJokes (converts query to uri encoded string)
+-----------------------------------------------------------------------------------------------------------------------
+EXAMPLE USAGE:
+
+const categories = document.getElementById("categorySelect");
+
+chuckWrapper.getCategories().then(() => {
+  chuckWrapper.categories.forEach(category => {
+    let option = document.createElement("option");
+    option.value = category;
+    option.innerText = category;
+    categories.appendChild(option);
+  });
+});
+-----------------------------------------------------------------------------------------------------------------------
+*/
+
 class ChuckWrapper {
   constructor() {
-    this.numItems = 1;
-    this.repeat = false;
-    this.currentJokes = [];
-    this.categories = [];
-    this._failLimit = 10;
-    this._seenJokes = new Set();
-    this._isGenerating = false;
+    this.numItems = 1;            // number of jokes to fetch
+    this.repeat = false;          // allow joke repetition during a session
+    this.currentJokes = [];       // array of jokes to display
+    this.categories = [];         // array of joke categories
+    this._failLimit = 10;         // number of failed attempts to fetch a joke (prevents infinite loop and API abuse)
+    this._seenJokes = new Set();  // set of joke ids seen during a session
+    this._isGenerating = false;   // whether jokes are currently being generated
   }
 
+  // private API calls
   async _fetchCategories() {
     let categories = await fetch("https://api.chucknorris.io/jokes/categories");
     this.categories = await categories.json();
@@ -33,6 +67,7 @@ class ChuckWrapper {
     }
   }
 
+  // public UI methods
   async getCategories() {
     await this._fetchCategories();
   }

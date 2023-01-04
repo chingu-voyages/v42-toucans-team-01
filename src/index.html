@@ -6,46 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/reset.css">
-
-    <!-- fav icon line -->
-
+    <link rel="shortcut icon" href="favicon.ico" type="./images/favicon.icon">
     <title>Chuck Norris App</title>
 </head>
 <body>
     
     <header>
         <!-- nav bar -->
-        <nav>
-            <h1>Chuck Norris App</h1>
-            <ul>
-                <li><a href="#">Random</a></li>
-                <li><a href="#">Categories</a></li>
-                <li><a href="#">Search</a></li>
-                <li><a href="#">Team</a></li>
-            </ul>
-        </nav>
+        <div>
+            <nav>
+                <h1>Chuck Norris App</h1>
+                <ul>
+                    <li><a href="#">Random</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Search</a></li>
+                    <li><a href="#">Team</a></li>
+                </ul>
+            </nav>
+        </div>
+       
     </header>
 
     
     <!-- section  -->
-    <Section>
+    <section>
         <div>
             <button>Random</button>
             <button>Search</button>
-            <button>Categories</button>
+            <div>
+                <button>Categories</button>
+                <select name="Categories" id="" multiple>
+                    <option value="1">animal</option>
+                    <option value="2">career</option>
+                    <option value="3">dev</option>
+                    <option value="4">fashion</option>
+                    <option value="5">food</option>
+                    <option value="6">history</option>
+                    <option value="7">money</option>
+                  </select>
+            </div>
         </div>
+
         <div>
             <h3>“Chuck Norris types with one finger. He points it at the keyboard and the keyboard does the rest.”</h3>
         </div>
 
-    </Section>
+    </section>
 
 
     <!-- footer -->
     <footer>
         <div>
             <div>
-                <p>This project was made by a team of volunteers to exercise agile methodologies and collaborative git environment. See our repository for more details.</p>
+                <p>This project was made by a team of volunteers to exercise agile methodologies and collaborative git environment.</p>
+                <a href="https://github.com/chingu-voyages/v42-toucans-team-01/">See our repository for more details.</a> 
             </div>
             <div>
                 <h4>TEAM</h4>
@@ -59,6 +73,6 @@
     </footer>
 
 
-    <script src="./js/scripts.js"></script>
+    <script src="./js/scripts.js" defer></script>
 </body>
 </html>

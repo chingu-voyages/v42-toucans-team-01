@@ -8,11 +8,11 @@ chuckWrapper.currentJokes - array of jokes to display (default [])
 -----------------------------------------------------------------------------------------------------------------------
 PUBLIC METHODS (coroutines):
 
-chuckWrapper.getJokes() - fetches {numItems} of jokes from API and stores them in chuckWrapper.currentJokes
+chuckWrapper.getJokes() - fetches {numItems} of jokes from API and stores them in chuckWrapper.jokes
 chuckWrapper.getJokesByCategory(category) - fetches {numItems} of jokes from API with the given category and stores
-                                            them in chuckWrapper.currentJokes
+                                            them in chuckWrapper.jokes
 chuckWrapper.getJokesByQuery(query) - fetches all jokes from API that match the given query and stores them in
-                                      chuckWrapper.currentJokes (converts query to uri encoded string)
+                                      chuckWrapper.jokes (converts query to uri encoded string)
 -----------------------------------------------------------------------------------------------------------------------
 EXAMPLE USAGE:
 
@@ -21,7 +21,7 @@ const jokeList = document.getElementById("jokeList");
 
 generateButton.addEventListener("click", async () => {
   chuckWrapper.getJokes().then(() => {
-    chuckWrapper.currentJokes.forEach(joke => {
+    chuckWrapper.jokes.forEach(joke => {
       let listItem = document.createElement("li");
       listItem.innerText = joke.value;
       jokeList.appendChild(listItem);
@@ -35,7 +35,7 @@ class ChuckWrapper {
   constructor() {
     this.numItems = 1;               // number of jokes to fetch
     this.repeat = false;             // allow joke repetition during a session
-    this.currentJokes = [];          // array of jokes to display
+    this.jokes = [];                 // array of jokes to display
     this._failLimit = 10;            // number of failed attempts to fetch a joke (prevents infinite loop and API abuse)
     this._seenJokes = new Set();     // set of joke ids seen during a session
     this._isGenerating = false;      // whether jokes are currently being generated
@@ -57,7 +57,7 @@ class ChuckWrapper {
     return await joke.json();
   }
 
-  async _fetchJokeByQuery(query) {
+  async _fetchJokesByQuery(query) {
     let search = await fetch(`https://api.chucknorris.io/jokes/search?query=${query}`);
     if (search.ok) {
       return await search.json();
@@ -76,9 +76,9 @@ class ChuckWrapper {
       return;
     }
     this._isGenerating = true;
-    this.currentJokes = [];
+    this.jokes = [];
     let fails = 0;
-    while (this.currentJokes.length < this.numItems && fails < this._failLimit) {
+    while (this.jokes.length < this.numItems && fails < this._failLimit) {
       let joke = await this._fetchJoke();
       if (this._hasExcludedCategory(joke)) {
         fails += 1;
@@ -86,13 +86,13 @@ class ChuckWrapper {
       }
       if (!this._seenJokes.has(joke.id) || this.repeat) {
         this._seenJokes.add(joke.id);
-        this.currentJokes.push(joke.value);
+        this.jokes.push(joke.value);
       } else {
         fails += 1;
       }
     }
-    if (this.currentJokes.length === 0) {
-      this.currentJokes.push("No jokes found");
+    if (this.jokes.length === 0) {
+      this.jokes.push("No jokes found");
     }
     this._isGenerating = false;
   }
@@ -102,9 +102,9 @@ class ChuckWrapper {
       return;
     }
     this._isGenerating = true;
-    this.currentJokes = [];
+    this.jokes = [];
     let fails = 0;
-    while (this.currentJokes.length < this.numItems && fails < this._failLimit) {
+    while (this.jokes.length < this.numItems && fails < this._failLimit) {
       let joke = await this._fetchJokeByCategory(category);
       if (this._hasExcludedCategory(joke)) {
         fails += 1;
@@ -112,13 +112,13 @@ class ChuckWrapper {
       }
       if (!this._seenJokes.has(joke.id) || this.repeat) {
         this._seenJokes.add(joke.id);
-        this.currentJokes.push(joke.value);
+        this.jokes.push(joke.value);
       } else {
         fails += 1;
       }
     }
-    if (this.currentJokes.length === 0) {
-      this.currentJokes.push("No jokes found");
+    if (this.jokes.length === 0) {
+      this.jokes.push("No jokes found");
     }
     this._isGenerating = false;
   }
@@ -129,16 +129,16 @@ class ChuckWrapper {
     }
     this._isGenerating = true;
     query = encodeURIComponent(query.toLowerCase());
-    this.currentJokes = [];
-    let search = await this._fetchJokeByQuery(query);
+    this.jokes = [];
+    let search = await this._fetchJokesByQuery(query);
     let jokes = search.result;
     jokes.forEach(joke => {
       if (!this._hasExcludedCategory(joke)) {
-        this.currentJokes.push(joke.value);
+        this.jokes.push(joke.value);
       }
     });
-    if (this.currentJokes.length === 0) {
-      this.currentJokes.push("No jokes found");
+    if (this.jokes.length === 0) {
+      this.jokes.push("No jokes found");
     }
     this._isGenerating = false;
   }

@@ -6,6 +6,7 @@ class ChuckWrapper {
     this.categories = [];
     this._failLimit = 10;
     this._seenJokes = new Set();
+    this._isGenerating = false;
   }
 
   async _fetchCategories() {
@@ -37,6 +38,8 @@ class ChuckWrapper {
   }
 
   async getJokes() {
+    if (this._isGenerating) return;
+    this._isGenerating = true;
     this.currentJokes = [];
     let fails = 0;
     while (this.currentJokes.length < this.numItems && fails < this._failLimit) {
@@ -51,9 +54,12 @@ class ChuckWrapper {
         this.currentJokes.push("No jokes found");
       }
     }
+    this._isGenerating = false;
   }
 
   async getJokesByCategory(category) {
+    if (this._isGenerating) return;
+    this._isGenerating = true;
     this.currentJokes = [];
     let fails = 0;
     while (this.currentJokes.length < this.numItems && fails < this._failLimit) {
@@ -68,9 +74,12 @@ class ChuckWrapper {
         this.currentJokes.push("No jokes found");
       }
     }
+    this._isGenerating = false;
   }
 
   async getJokesByQuery(query) {
+    if (this._isGenerating) return;
+    this._isGenerating = true;
     query = encodeURIComponent(query.toLowerCase());
     this.currentJokes = [];
     let search = await this._fetchJokeByQuery(query);
@@ -82,5 +91,6 @@ class ChuckWrapper {
     } else {
       this.currentJokes.push("No jokes found");
     }
+    this._isGenerating = false;
   }
 }

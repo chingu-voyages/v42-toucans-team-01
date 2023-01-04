@@ -4,6 +4,7 @@ class ChuckWrapper {
     this.repeat = false;
     this.currentJokes = [];
     this.categories = [];
+    this._failLimit = 10;
     this._seenJokes = new Set();
   }
 
@@ -37,32 +38,49 @@ class ChuckWrapper {
 
   async getJokes() {
     this.currentJokes = [];
-    while (this.currentJokes.length < this.numItems) {
+    let fails = 0;
+    while (this.currentJokes.length < this.numItems && fails < this._failLimit) {
       let joke = await this._fetchJoke();
       if (!this._seenJokes.has(joke.id) || this.repeat) {
         this._seenJokes.add(joke.id);
         this.currentJokes.push(joke.value);
+      } else {
+        fails += 1;
+      }
+      if (this.currentJokes.length === 0) {
+        this.currentJokes.push("No jokes found");
       }
     }
   }
 
   async getJokesByCategory(category) {
     this.currentJokes = [];
-    while (this.currentJokes.length < this.numItems) {
+    let fails = 0;
+    while (this.currentJokes.length < this.numItems && fails < this._failLimit) {
       let joke = await this._fetchJokeByCategory(category);
       if (!this._seenJokes.has(joke.id) || this.repeat) {
         this._seenJokes.add(joke.id);
         this.currentJokes.push(joke.value);
+      } else {
+        fails += 1;
+      }
+      if (this.currentJokes.length === 0) {
+        this.currentJokes.push("No jokes found");
       }
     }
   }
 
   async getJokesByQuery(query) {
+    query = encodeURIComponent(query.toLowerCase());
     this.currentJokes = [];
     let search = await this._fetchJokeByQuery(query);
     let jokes = search.result;
-    for (let i = 0; i < jokes.length; i++) {
-      this.currentJokes.push(jokes[i].value);
+    if (jokes.length > 0) {
+      jokes.forEach(joke => {
+        this.currentJokes.push(joke.value);
+      });
+    } else {
+      this.currentJokes.push("No jokes found");
     }
   }
 }

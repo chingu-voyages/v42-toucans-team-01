@@ -4,12 +4,10 @@ PUBLIC VARIABLES:
 
 chuckWrapper.numItems - number of jokes to fetch (default 1)
 chuckWrapper.repeat - whether to allow repeat jokes (default false)
-chuckWrapper.categories - array of joke categories (empty until getCategories() is called and awaited) (default [])
 chuckWrapper.currentJokes - array of jokes to display (default [])
 -----------------------------------------------------------------------------------------------------------------------
 PUBLIC METHODS (coroutines):
 
-chuckWrapper.getCategories() - fetches categories from API and stores them in chuckWrapper.categories
 chuckWrapper.getJokes() - fetches {numItems} of jokes from API and stores them in chuckWrapper.currentJokes
 chuckWrapper.getJokesByCategory(category) - fetches {numItems} of jokes from API with the given category and stores
                                             them in chuckWrapper.currentJokes
@@ -18,14 +16,16 @@ chuckWrapper.getJokesByQuery(query) - fetches all jokes from API that match the 
 -----------------------------------------------------------------------------------------------------------------------
 EXAMPLE USAGE:
 
-const categories = document.getElementById("categorySelect");
+const generateButton = document.getElementById("generateButton");
+const jokeList = document.getElementById("jokeList");
 
-chuckWrapper.getCategories().then(() => {
-  chuckWrapper.categories.forEach(category => {
-    let option = document.createElement("option");
-    option.value = category;
-    option.innerText = category;
-    categories.appendChild(option);
+generateButton.addEventListener("click", async () => {
+  chuckWrapper.getJokes().then(() => {
+    chuckWrapper.currentJokes.forEach(joke => {
+      let listItem = document.createElement("li");
+      listItem.innerText = joke.value;
+      jokeList.appendChild(listItem);
+    });
   });
 });
 -----------------------------------------------------------------------------------------------------------------------
@@ -33,21 +33,20 @@ chuckWrapper.getCategories().then(() => {
 
 class ChuckWrapper {
   constructor() {
-    this.numItems = 1;            // number of jokes to fetch
-    this.repeat = false;          // allow joke repetition during a session
-    this.currentJokes = [];       // array of jokes to display
-    this.categories = [];         // array of joke categories
-    this._failLimit = 10;         // number of failed attempts to fetch a joke (prevents infinite loop and API abuse)
-    this._seenJokes = new Set();  // set of joke ids seen during a session
-    this._isGenerating = false;   // whether jokes are currently being generated
+    this.numItems = 1;               // number of jokes to fetch
+    this.repeat = false;             // allow joke repetition during a session
+    this.currentJokes = [];          // array of jokes to display
+    this._failLimit = 10;            // number of failed attempts to fetch a joke (prevents infinite loop and API abuse)
+    this._seenJokes = new Set();     // set of joke ids seen during a session
+    this._isGenerating = false;      // whether jokes are currently being generated
+    this._excludedCategories = [     // categories to exclude
+      "explicit",
+      "political",
+      "religion",
+    ];
   }
 
   // private API calls
-  async _fetchCategories() {
-    let categories = await fetch("https://api.chucknorris.io/jokes/categories");
-    this.categories = await categories.json();
-  }
-
   async _fetchJoke() {
     let joke = await fetch("https://api.chucknorris.io/jokes/random");
     return await joke.json();
@@ -67,63 +66,78 @@ class ChuckWrapper {
     }
   }
 
-  // public UI methods
-  async getCategories() {
-    await this._fetchCategories();
+  _hasExcludedCategory(joke) {
+    return this._excludedCategories.filter(excludedCategory => joke.categories.includes(excludedCategory)).length !== 0;
   }
 
+  // public UI functions
   async getJokes() {
-    if (this._isGenerating) return;
+    if (this._isGenerating) {
+      return;
+    }
     this._isGenerating = true;
     this.currentJokes = [];
     let fails = 0;
     while (this.currentJokes.length < this.numItems && fails < this._failLimit) {
       let joke = await this._fetchJoke();
+      if (this._hasExcludedCategory(joke)) {
+        fails += 1;
+        continue;
+      }
       if (!this._seenJokes.has(joke.id) || this.repeat) {
         this._seenJokes.add(joke.id);
         this.currentJokes.push(joke.value);
       } else {
         fails += 1;
       }
-      if (this.currentJokes.length === 0) {
-        this.currentJokes.push("No jokes found");
-      }
+    }
+    if (this.currentJokes.length === 0) {
+      this.currentJokes.push("No jokes found");
     }
     this._isGenerating = false;
   }
 
   async getJokesByCategory(category) {
-    if (this._isGenerating) return;
+    if (this._isGenerating) {
+      return;
+    }
     this._isGenerating = true;
     this.currentJokes = [];
     let fails = 0;
     while (this.currentJokes.length < this.numItems && fails < this._failLimit) {
       let joke = await this._fetchJokeByCategory(category);
+      if (this._hasExcludedCategory(joke)) {
+        fails += 1;
+        continue;
+      }
       if (!this._seenJokes.has(joke.id) || this.repeat) {
         this._seenJokes.add(joke.id);
         this.currentJokes.push(joke.value);
       } else {
         fails += 1;
       }
-      if (this.currentJokes.length === 0) {
-        this.currentJokes.push("No jokes found");
-      }
+    }
+    if (this.currentJokes.length === 0) {
+      this.currentJokes.push("No jokes found");
     }
     this._isGenerating = false;
   }
 
   async getJokesByQuery(query) {
-    if (this._isGenerating) return;
+    if (this._isGenerating) {
+      return;
+    }
     this._isGenerating = true;
     query = encodeURIComponent(query.toLowerCase());
     this.currentJokes = [];
     let search = await this._fetchJokeByQuery(query);
     let jokes = search.result;
-    if (jokes.length > 0) {
-      jokes.forEach(joke => {
+    jokes.forEach(joke => {
+      if (!this._hasExcludedCategory(joke)) {
         this.currentJokes.push(joke.value);
-      });
-    } else {
+      }
+    });
+    if (this.currentJokes.length === 0) {
       this.currentJokes.push("No jokes found");
     }
     this._isGenerating = false;

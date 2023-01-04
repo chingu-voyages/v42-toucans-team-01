@@ -23,7 +23,7 @@ generateButton.addEventListener("click", async () => {
   chuckWrapper.getJokes().then(() => {
     chuckWrapper.jokes.forEach(joke => {
       let listItem = document.createElement("li");
-      listItem.innerText = joke.value;
+      listItem.innerText = joke;
       jokeList.appendChild(listItem);
     });
   });

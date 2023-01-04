@@ -129,3 +129,5 @@ class ChuckWrapper {
     this._isGenerating = false;
   }
 }
+
+const chuckWrapper = new ChuckWrapper();  // ChuckWrapper instance for global use for the UI (*do not create another)

@@ -4,7 +4,7 @@ PUBLIC VARIABLES:
 
 chuckWrapper.numItems - number of jokes to fetch (default 1)
 chuckWrapper.repeat - whether to allow repeat jokes (default false)
-chuckWrapper.currentJokes - array of jokes to display (default [])
+chuckWrapper.jokes - array of jokes to display (default [])
 -----------------------------------------------------------------------------------------------------------------------
 PUBLIC METHODS (coroutines):
 

@@ -40,48 +40,30 @@ class ChuckWrapper {
     this._seenJokes = new Set();     // set of joke ids seen during a session
     this._isGenerating = false;      // whether jokes are currently being generated
     this._includedCategories = [     // categories to exclude
-      "animal",
-      "career",
-      "celebrity",
-      "dev",
-      "fashion",
-      "food",
-      "history",
-      "money",
-      "movie",
-      "music",
-      "science",
-      "sport",
-      "travel"
+      "animal", "career",
+      "celebrity", "dev",
+      "fashion", "food",
+      "history", "money",
+      "movie", "music",
+      "science", "sport",
+      "travel",
     ];
   }
 
   // private API calls
   async _fetchJoke() {
     let joke = await fetch("https://api.chucknorris.io/jokes/random");
-    if (joke.ok) {
-      return await joke.json();
-    } else {
-      return null;
-    }
+    return (joke.ok) ? await joke.json() : null;
   }
 
   async _fetchJokeByCategory(category) {
     let joke = await fetch(`https://api.chucknorris.io/jokes/random?category=${category}`);
-    if (joke.ok) {
-      return await joke.json();
-    } else {
-      return null;
-    }
+    return (joke.ok) ? await joke.json() : null;
   }
 
   async _fetchJokesByQuery(query) {
     let search = await fetch(`https://api.chucknorris.io/jokes/search?query=${query}`);
-    if (search.ok) {
-      return await search.json();
-    } else {
-      return { result: [] };  // handled 400 error but no way to hide console error message on a failed fetch
-    }
+    return (search.ok) ? await search.json() : { result: [] };
   }
 
   _hasExcludedCategory(joke) {
@@ -90,12 +72,11 @@ class ChuckWrapper {
 
   // public UI functions
   async getJokes() {
-    if (this._isGenerating) {
-      return;
-    }
+    if (this._isGenerating) return;
     this._isGenerating = true;
     this.jokes = [];
     let fails = 0;
+
     while (this.jokes.length < this.numItems && fails < this._failLimit) {
       let joke = await this._fetchJoke();
       if (this._hasExcludedCategory(joke) || !this.repeat && this._seenJokes.has(joke.id) || joke === null) {
@@ -105,19 +86,18 @@ class ChuckWrapper {
       this._seenJokes.add(joke.id);
       this.jokes.push(joke.value);
     }
-    if (this.jokes.length === 0) {
-      this.jokes.push("No jokes found");
-    }
+
+    if (this.jokes.length === 0) this.jokes.push("No jokes found");
     this._isGenerating = false;
   }
 
   async getJokesByCategory(category) {
-    if (this._isGenerating) {
-      return;
-    }
+    if (this._isGenerating) return;
     this._isGenerating = true;
+
     this.jokes = [];
     let fails = 0;
+
     while (this.jokes.length < this.numItems && fails < this._failLimit) {
       let joke = await this._fetchJokeByCategory(category);
       if (this._hasExcludedCategory(joke) || !this.repeat && this._seenJokes.has(joke.id) || joke === null) {
@@ -127,26 +107,24 @@ class ChuckWrapper {
       this._seenJokes.add(joke.id);
       this.jokes.push(joke.value);
     }
-    if (this.jokes.length === 0) {
-      this.jokes.push("No jokes found");
-    }
+
+    if (this.jokes.length === 0) this.jokes.push("No jokes found");
     this._isGenerating = false;
   }
 
   async getJokesByQuery(query) {
-    if (this._isGenerating) {
-      return;
-    }
+    if (this._isGenerating) return;
     this._isGenerating = true;
+
     query = encodeURIComponent(query.toLowerCase());
     this.jokes = [];
     let search = await this._fetchJokesByQuery(query);
     let jokes = search.result;
+
     jokes.filter(joke => !this._hasExcludedCategory(joke));
     this.jokes = jokes.map(joke => joke.value);
-    if (this.jokes.length === 0) {
-      this.jokes.push("No jokes found");
-    }
+
+    if (this.jokes.length === 0) this.jokes.push("No jokes found");
     this._isGenerating = false;
   }
 }

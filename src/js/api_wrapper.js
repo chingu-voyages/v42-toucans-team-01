@@ -39,22 +39,40 @@ class ChuckWrapper {
     this._failLimit = 10;            // number of failed attempts to fetch a joke (prevents infinite loop and API abuse)
     this._seenJokes = new Set();     // set of joke ids seen during a session
     this._isGenerating = false;      // whether jokes are currently being generated
-    this._excludedCategories = [     // categories to exclude
-      "explicit",
-      "political",
-      "religion",
+    this._includedCategories = [     // categories to exclude
+      "animal",
+      "career",
+      "celebrity",
+      "dev",
+      "fashion",
+      "food",
+      "history",
+      "money",
+      "movie",
+      "music",
+      "science",
+      "sport",
+      "travel"
     ];
   }
 
   // private API calls
   async _fetchJoke() {
     let joke = await fetch("https://api.chucknorris.io/jokes/random");
-    return await joke.json();
+    if (joke.ok) {
+      return await joke.json();
+    } else {
+      return null;
+    }
   }
 
   async _fetchJokeByCategory(category) {
     let joke = await fetch(`https://api.chucknorris.io/jokes/random?category=${category}`);
-    return await joke.json();
+    if (joke.ok) {
+      return await joke.json();
+    } else {
+      return null;
+    }
   }
 
   async _fetchJokesByQuery(query) {
@@ -67,7 +85,7 @@ class ChuckWrapper {
   }
 
   _hasExcludedCategory(joke) {
-    return this._excludedCategories.filter(excludedCategory => joke.categories.includes(excludedCategory)).length !== 0;
+    return joke.categories.length !== 0 && joke.categories.filter(category => this._includedCategories.includes(category)).length === 0;
   }
 
   // public UI functions
@@ -80,16 +98,12 @@ class ChuckWrapper {
     let fails = 0;
     while (this.jokes.length < this.numItems && fails < this._failLimit) {
       let joke = await this._fetchJoke();
-      if (this._hasExcludedCategory(joke)) {
+      if (this._hasExcludedCategory(joke) || !this.repeat && this._seenJokes.has(joke.id) || joke === null) {
         fails += 1;
         continue;
       }
-      if (!this._seenJokes.has(joke.id) || this.repeat) {
-        this._seenJokes.add(joke.id);
-        this.jokes.push(joke.value);
-      } else {
-        fails += 1;
-      }
+      this._seenJokes.add(joke.id);
+      this.jokes.push(joke.value);
     }
     if (this.jokes.length === 0) {
       this.jokes.push("No jokes found");
@@ -106,16 +120,12 @@ class ChuckWrapper {
     let fails = 0;
     while (this.jokes.length < this.numItems && fails < this._failLimit) {
       let joke = await this._fetchJokeByCategory(category);
-      if (this._hasExcludedCategory(joke)) {
+      if (this._hasExcludedCategory(joke) || !this.repeat && this._seenJokes.has(joke.id) || joke === null) {
         fails += 1;
         continue;
       }
-      if (!this._seenJokes.has(joke.id) || this.repeat) {
-        this._seenJokes.add(joke.id);
-        this.jokes.push(joke.value);
-      } else {
-        fails += 1;
-      }
+      this._seenJokes.add(joke.id);
+      this.jokes.push(joke.value);
     }
     if (this.jokes.length === 0) {
       this.jokes.push("No jokes found");
@@ -132,11 +142,8 @@ class ChuckWrapper {
     this.jokes = [];
     let search = await this._fetchJokesByQuery(query);
     let jokes = search.result;
-    jokes.forEach(joke => {
-      if (!this._hasExcludedCategory(joke)) {
-        this.jokes.push(joke.value);
-      }
-    });
+    jokes.filter(joke => !this._hasExcludedCategory(joke));
+    this.jokes = jokes.map(joke => joke.value);
     if (this.jokes.length === 0) {
       this.jokes.push("No jokes found");
     }

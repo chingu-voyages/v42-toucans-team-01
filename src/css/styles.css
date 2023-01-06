@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
+
+:root {
+--main-font-style: "Roboto";
+--accent-color: #ffd05a;
+--base-color: white;
+--secondary-background: #40596b;
+--hero-background: #55c0ec;
+--search-background: #f0ce7a;
+--hero-title: rgba(0, 0, 0, 0.65);
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+/*
+************** ELEMENTS **************
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+ul,
+li,
+figcaption,
+select {
+font-family: var(--main-font-style), sans-serif;
+font-weight: 400;
+font-size: 1.25rem;
+color: var(--base-color);
+}
+
+span {
+font-weight: 300;
+}

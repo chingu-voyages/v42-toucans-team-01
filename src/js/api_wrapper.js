@@ -121,8 +121,7 @@ class ChuckWrapper {
     let search = await this._fetchJokesByQuery(query);
     let jokes = search.result;
 
-    jokes.filter(joke => !this._hasExcludedCategory(joke));
-    this.jokes = jokes.map(joke => joke.value);
+    this.jokes = jokes.filter(joke => !this._hasExcludedCategory(joke)).map(joke => joke.value);
 
     if (this.jokes.length === 0) this.jokes.push("No jokes found");
     this._isGenerating = false;

@@ -28,14 +28,26 @@
     </header>
 
     
-    <!-- section  -->
-    <section>
-        <div>
-            <button>Random</button>
-            <button>Search</button>
+    <!-- main  -->
+    <main>
+        <section>
             <div>
-                <button>Categories</button>
+                <label for="query">Query:</label>
+                <input type="text" id="query">
+                <button id="search">Search</button>
+            </div>
+            <div>
+                <label for="numItems">Max Items:</label>
+                <input type="number" id="numItems" value="1">
+            </div>
+            <div>
+                <label for="repeat">Repeat Jokes:</label>
+                <input type="checkbox" id="repeat">
+            </div>
+            <div>
+                <label for="category">Category:</label>
                 <select name="Categories" id="category">
+                    <option value="all">all</option>
                     <option value="animal">animal</option>
                     <option value="career">career</option>
                     <option value="dev">dev</option>
@@ -51,13 +63,13 @@
                     <option value="travel">travel</option>
                   </select>
             </div>
-        </div>
+            <button id="generate">Generate</button>
+        </section>
 
-        <div>
-            <h3>“Chuck Norris types with one finger. He points it at the keyboard and the keyboard does the rest.”</h3>
-        </div>
-
-    </section>
+        <section>
+            <div id="jokes"></div>
+        </section>
+    </main>
 
 
     <!-- footer -->

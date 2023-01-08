@@ -39,15 +39,16 @@ class ChuckWrapper {
     this._failLimit = 10;            // number of failed attempts to fetch a joke (prevents infinite loop and API abuse)
     this._seenJokes = new Set();     // set of joke ids seen during a session
     this._isGenerating = false;      // whether jokes are currently being generated
-    this._includedCategories = [     // categories to exclude
-      "animal", "career",
-      "celebrity", "dev",
-      "fashion", "food",
-      "history", "money",
-      "movie", "music",
-      "science", "sport",
-      "travel",
-    ];
+    this._includedCategories =       // categories to exclude
+        new Set([
+          "animal", "career",
+          "celebrity", "dev",
+          "fashion", "food",
+          "history", "money",
+          "movie", "music",
+          "science", "sport",
+          "travel",
+        ];
   }
 
   // private API calls

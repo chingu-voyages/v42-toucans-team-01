@@ -67,7 +67,12 @@ class ChuckWrapper {
   }
 
   _hasExcludedCategory(joke) {
-    return joke.categories.length !== 0 && joke.categories.filter(category => this._includedCategories.includes(category)).length === 0;
+    return joke.categories.length !== 0 &&
+        joke.categories.filter(category => this._includedCategories.has(category)).length === 0;
+  }
+
+  _hasBadWord(joke) {
+    return joke.toLowerCase().split(" ").some(word => bad_words.has(word));
   }
 
   // public UI functions
@@ -79,7 +84,8 @@ class ChuckWrapper {
 
     while (this.jokes.length < this.numItems && fails < this._failLimit) {
       let joke = await this._fetchJoke();
-      if (this._hasExcludedCategory(joke) || !this.repeat && this._seenJokes.has(joke.id) || joke === null) {
+      if (this._hasExcludedCategory(joke) || this._hasBadWord(joke.value) ||
+          !this.repeat && this._seenJokes.has(joke.id)) {
         fails += 1;
         continue;
       }
@@ -100,7 +106,8 @@ class ChuckWrapper {
 
     while (this.jokes.length < this.numItems && fails < this._failLimit) {
       let joke = await this._fetchJokeByCategory(category);
-      if (this._hasExcludedCategory(joke) || !this.repeat && this._seenJokes.has(joke.id) || joke === null) {
+      if (this._hasExcludedCategory(joke) || this._hasBadWord(joke.value) ||
+          !this.repeat && this._seenJokes.has(joke.id)) {
         fails += 1;
         continue;
       }
@@ -122,6 +129,7 @@ class ChuckWrapper {
     let jokes = search.result;
 
     this.jokes = jokes.filter(joke => !this._hasExcludedCategory(joke)).map(joke => joke.value);
+    this.jokes = this.jokes.filter(joke => !this._hasBadWord(joke));
 
     if (this.jokes.length === 0) this.jokes.push("No jokes found");
     this._isGenerating = false;

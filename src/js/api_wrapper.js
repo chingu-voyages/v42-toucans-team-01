@@ -1,4 +1,13 @@
 /*
+WRAPPER FEATURES:
+
+- random jokes
+- jokes by category
+- jokes by search query
+- multiple jokes at once
+- do not repeat jokes during a session (optional)
+- white list of joke categories
+- bad word filter for uncategorized jokes (there are so many)
 -----------------------------------------------------------------------------------------------------------------------
 PUBLIC VARIABLES:
 
@@ -39,7 +48,7 @@ class ChuckWrapper {
     this._failLimit = 10;            // number of failed attempts to fetch a joke (prevents infinite loop and API abuse)
     this._seenJokes = new Set();     // set of joke ids seen during a session
     this._isGenerating = false;      // whether jokes are currently being generated
-    this._includedCategories =       // categories to exclude
+    this._includedCategories =       // categories to include in joke generation
         new Set([
           "animal", "career",
           "celebrity", "dev",
@@ -48,7 +57,7 @@ class ChuckWrapper {
           "movie", "music",
           "science", "sport",
           "travel",
-        ];
+        ]);
   }
 
   // private API calls

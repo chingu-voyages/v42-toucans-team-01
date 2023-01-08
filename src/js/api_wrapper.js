@@ -5,6 +5,7 @@ WRAPPER FEATURES:
 - jokes by category
 - jokes by search query
 - multiple jokes at once
+- api abuse prevention
 - do not repeat jokes during a session (optional)
 - white list of joke categories
 - bad word filter for uncategorized jokes (there are so many)

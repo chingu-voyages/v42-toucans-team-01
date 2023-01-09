@@ -1,4 +1,14 @@
 /*
+WRAPPER FEATURES:
+
+- random jokes
+- jokes by category
+- jokes by search query
+- multiple jokes at once
+- api abuse prevention
+- do not repeat jokes during a session (optional)
+- white list of joke categories
+- bad word filter for uncategorized jokes (there are so many)
 -----------------------------------------------------------------------------------------------------------------------
 PUBLIC VARIABLES:
 
@@ -39,15 +49,16 @@ class ChuckWrapper {
     this._failLimit = 10;            // number of failed attempts to fetch a joke (prevents infinite loop and API abuse)
     this._seenJokes = new Set();     // set of joke ids seen during a session
     this._isGenerating = false;      // whether jokes are currently being generated
-    this._includedCategories = [     // categories to exclude
-      "animal", "career",
-      "celebrity", "dev",
-      "fashion", "food",
-      "history", "money",
-      "movie", "music",
-      "science", "sport",
-      "travel",
-    ];
+    this._includedCategories =       // categories to include in joke generation
+        new Set([
+          "animal", "career",
+          "celebrity", "dev",
+          "fashion", "food",
+          "history", "money",
+          "movie", "music",
+          "science", "sport",
+          "travel",
+        ]);
   }
 
   // private API calls
@@ -67,7 +78,14 @@ class ChuckWrapper {
   }
 
   _hasExcludedCategory(joke) {
-    return joke.categories.length !== 0 && joke.categories.filter(category => this._includedCategories.includes(category)).length === 0;
+    return joke.categories.length !== 0 &&
+        joke.categories.filter(category => this._includedCategories.has(category)).length === 0;
+  }
+
+  _hasBadWord(joke) {
+    return joke.toLowerCase().split(" ").some(word => {
+      return bad_words.has(word) || bad_words.has(word.replace(/[^a-z]/g, ""))
+    });
   }
 
   // public UI functions
@@ -79,7 +97,8 @@ class ChuckWrapper {
 
     while (this.jokes.length < this.numItems && fails < this._failLimit) {
       let joke = await this._fetchJoke();
-      if (this._hasExcludedCategory(joke) || !this.repeat && this._seenJokes.has(joke.id) || joke === null) {
+      if (this._hasExcludedCategory(joke) || this._hasBadWord(joke.value) ||
+          !this.repeat && this._seenJokes.has(joke.id)) {
         fails += 1;
         continue;
       }
@@ -100,7 +119,8 @@ class ChuckWrapper {
 
     while (this.jokes.length < this.numItems && fails < this._failLimit) {
       let joke = await this._fetchJokeByCategory(category);
-      if (this._hasExcludedCategory(joke) || !this.repeat && this._seenJokes.has(joke.id) || joke === null) {
+      if (this._hasExcludedCategory(joke) || this._hasBadWord(joke.value) ||
+          !this.repeat && this._seenJokes.has(joke.id)) {
         fails += 1;
         continue;
       }
@@ -122,6 +142,7 @@ class ChuckWrapper {
     let jokes = search.result;
 
     this.jokes = jokes.filter(joke => !this._hasExcludedCategory(joke)).map(joke => joke.value);
+    this.jokes = this.jokes.filter(joke => !this._hasBadWord(joke));
 
     if (this.jokes.length === 0) this.jokes.push("No jokes found");
     this._isGenerating = false;

@@ -1,0 +1,11 @@
+body{
+    background-image: linear-gradient(to bottom, #19C1AD, #3C67AC);
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    font-size: 40px;
+    color: #FF8524;
+    font-weight: 700;
+}

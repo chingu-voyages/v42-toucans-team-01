@@ -83,7 +83,7 @@ nav [type=text] {
 }
 
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
     nav {
         flex-direction: column;
     }

@@ -4,7 +4,6 @@ const teamButton = document.getElementById("teamButton");
 const randomSection = document.getElementById("randomSection");
 const jokeSection = document.getElementById("jokeSection");
 const teamSection = document.getElementById("teamSection");
-const searchForm = document.getElementById("searchForm");
 const teamFooterButton = document.getElementById("teamFooterButton");
 
 
@@ -35,8 +34,7 @@ const goToTeamPage = () => {
 randomButton.addEventListener("click", goToRandomPage);
 teamButton.addEventListener("click", goToTeamPage);
 teamFooterButton.addEventListener("click", goToTeamPage);
-searchForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+queryInput.addEventListener("keypress", (event) => {
   goToSearchPage();
   getSearchResults();
 });

@@ -35,6 +35,8 @@ randomButton.addEventListener("click", goToRandomPage);
 teamButton.addEventListener("click", goToTeamPage);
 teamFooterButton.addEventListener("click", goToTeamPage);
 queryInput.addEventListener("keypress", (event) => {
-  goToSearchPage();
-  getSearchResults();
+  if (event.key === "Enter") {
+    goToSearchPage();
+    getSearchResults();
+  }
 });

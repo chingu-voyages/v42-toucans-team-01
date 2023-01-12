@@ -1,4 +1,4 @@
-const mappingElement = document.getElementById("mapping");
+const breadcrumbElement = document.getElementById("breadcrumb");
 const randomButton = document.getElementById("randomButton");
 const teamButton = document.getElementById("teamButton");
 const randomSection = document.getElementById("randomSection");
@@ -7,25 +7,24 @@ const teamSection = document.getElementById("teamSection");
 const teamFooterButton = document.getElementById("teamFooterButton");
 
 
-const updateMapping = (newMapping) => mappingElement.innerText = newMapping;
+const updateBreadcrumb = (newText) => breadcrumbElement.innerText = newText;
 
 const goToRandomPage = () => {
-  updateMapping("RANDOM");
+  updateBreadcrumb("RANDOM");
   randomSection.style.display = "block";
   teamSection.style.display = "none";
   jokeSection.style.display = "block";
-  generateButton.click();
 }
 
 const goToSearchPage = () => {
-  updateMapping("SEARCH");
+  updateBreadcrumb("SEARCH");
   randomSection.style.display = "none";
   teamSection.style.display = "none";
   jokeSection.style.display = "block";
 }
 
 const goToTeamPage = () => {
-  updateMapping("TEAM");
+  updateBreadcrumb("TEAM");
   randomSection.style.display = "none";
   teamSection.style.display = "block";
   jokeSection.style.display = "none";

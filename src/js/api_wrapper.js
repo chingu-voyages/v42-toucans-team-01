@@ -84,7 +84,7 @@ class ChuckWrapper {
 
   _hasBadWord(joke) {
     return joke.toLowerCase().split(" ").some(word => {
-      return bad_words.has(word) || bad_words.has(word.replace(/[^a-z]/g, ""))
+      return badWords.has(word) || badWords.has(word.replace(/[^a-z]/g, ""))
     });
   }
 

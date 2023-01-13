@@ -1,10 +1,21 @@
-const searchButton = document.getElementById("search");
 const generateButton = document.getElementById("generate");
 const categorySelect = document.getElementById("category");
 const queryInput = document.getElementById("query");
 const jokesDiv = document.getElementById("jokes");
 const repeatCheckbox = document.getElementById("repeat");
 const numItemsInput = document.getElementById("numItems");
+
+
+const getSearchResults = () => {
+  chuckWrapper.getJokesByQuery(queryInput.value).then(() => {
+    jokesDiv.innerHTML = "";
+    chuckWrapper.jokes.forEach(joke => {
+      let blockquote = document.createElement("blockquote");
+      blockquote.innerText = joke;
+      jokesDiv.appendChild(blockquote);
+    });
+  });
+};
 
 repeatCheckbox.addEventListener("change", () => {
   chuckWrapper.repeat = repeatCheckbox.checked;
@@ -34,17 +45,6 @@ generateButton.addEventListener("click", () => {
       });
     });
   }
-});
-
-searchButton.addEventListener("click", () => {
-  chuckWrapper.getJokesByQuery(queryInput.value).then(() => {
-    jokesDiv.innerHTML = "";
-    chuckWrapper.jokes.forEach(joke => {
-      let blockquote = document.createElement("blockquote");
-      blockquote.innerText = joke;
-      jokesDiv.appendChild(blockquote);
-    });
-  });
 });
 
 generateButton.click();

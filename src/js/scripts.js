@@ -40,4 +40,4 @@ queryInput.addEventListener("keypress", (event) => {
   }
 });
 
-goToSearchPage();
+goToRandomPage();

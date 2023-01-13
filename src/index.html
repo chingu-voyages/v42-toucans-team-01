@@ -20,10 +20,11 @@
             <nav>
                 <ul>
                     <li class="logo"><a href="index.html">Chuckster</a></li>
+                    <li class="nav-links" id="breadcrumb"></li>
                 </ul>
                 <ul class="nav-links">
-                    <li><a href="#">Random</a></li>
-                    <li><a href="#">Team</a></li>
+                    <li id="randomButton"><a href="#randomSection">Random</a></li>
+                    <li id="teamButton"><a href="#teamSection">Team</a></li>
                     <div class="search-box">
                         <label for="query"></label>
                         <input type="text" class="input-search" placeholder="Search" id="query">
@@ -37,7 +38,7 @@
     
     <!-- main  -->
     <main>
-        <section>
+        <section id="randomSection">
             <div>
                 <label for="query">Query:</label>
                 <input type="text" id="query">
@@ -73,7 +74,7 @@
             <button id="generate">Generate</button>
         </section>
 
-        <section>
+        <section id="jokeSection">
             <div id="jokes"></div>
         </section>
     </main>

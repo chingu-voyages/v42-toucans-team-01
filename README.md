@@ -1,5 +1,4 @@
-# voyage-tasks
-Chuck Norris Facts App
+# Chuck Norris Facts App
 
 ## Description
 This app was made by a group of volunteers to exercise agile development, "commit discipline" and a collaborative git environment.

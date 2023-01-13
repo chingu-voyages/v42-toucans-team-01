@@ -4,7 +4,7 @@ Chuck Norris Facts App
 ## Description
 This app was made by a group of volunteers to exercise agile development, "commit discipline" and a collaborative git environment.
 
-## Style Guide / Figma layout
+## Style Guide
 [Figma layout](https://www.figma.com/file/CRs4vxKppbfGkFI92YqCsG/Chuck-App?node-id=0%3A1&t=EryPUGHRPulXVllf-0)
 
 ## Features

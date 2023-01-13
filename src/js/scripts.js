@@ -39,3 +39,5 @@ queryInput.addEventListener("keypress", (event) => {
     getSearchResults();
   }
 });
+
+goToSearchPage();

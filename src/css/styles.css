@@ -135,18 +135,6 @@ blockquote {
     padding: 20px;
 }
 
-#teamSection div {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 50px;
-}
-
-
-#teamSection div h2 {
-    font-size: 30px;
-    font-weight: 300;
-}
-
 input[type=number] {
     background-color:rgb(255 255 255 / 14%);
     color: white;
@@ -217,6 +205,99 @@ button {
     font-size: 20px;
     width: 50%;
 }
+
+
+/*team section style*/
+
+
+.flexbox-container-center{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin: 40px auto;
+    padding: 0px 30px;
+    justify-content: center;
+}
+
+.about-chuckster {
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+    padding: 0 40px 30px;
+  
+}
+
+.about-chuckster p, .about-chuckster a{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    padding:10px 0px;
+    
+}
+.inline, .inline a, .inline img {
+    display: flex;
+}
+
+#teamSection h2 {
+    font-size: 25px;
+    font-weight: 700;
+    padding-bottom:20px;
+}
+
+#teamSection h4 {
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+}
+
+.team-members {
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.team-members p {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.member {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    flex-direction: column;
+    padding: 10px 70px 0;
+}
+
+.member h2, .member p {
+    display: flex;
+    justify-content: center;
+}
+
+.team-member-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 100%;
+    padding-bottom: 10px;
+}
+
+.social-icon{
+    display: flex;
+    width: 30px;
+    height: 30px;
+}
+
+.social-icons-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+/*footer style*/
 
 footer {
     background-color: #000000;

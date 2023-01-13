@@ -81,6 +81,21 @@ nav [type=text] {
     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
 
+
+footer {
+    background-color:rgba(0, 0, 0, 0.5);
+}
+
+footer div {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 10px;
+}
+footer div a{
+    padding: 10px;
+}
+
 @media screen and (max-width: 850px) {
     nav {
         flex-direction: column;

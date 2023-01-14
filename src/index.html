@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="shortcut icon" href="favicon.ico" type="./images/favicon.icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    <title>Chuckster</title>
+</head>
+<body>
+    
+    <header>
+        <!-- nav bar -->
+        <div>
+            <nav>
+                <ul>
+                    <li class="logo"><a href="index.html">Chuckster</a></li>
+                    <li class="nav-links" id="breadcrumb"></li>
+                </ul>
+                <ul class="nav-links">
+                    <li id="randomButton"><a href="#">Random</a></li>
+                    <li id="teamButton"><a href="#">Team</a></li>
+                    <div class="search-box">
+                        <label for="query"></label>
+                        <input type="text" class="input-search" placeholder="Search" id="query">
+                    </div>
+                </ul>
+            </nav>
+        </div>
+       
+    </header>
+
+    
+    <!-- main  -->
+    <main>
+        <section id="randomSection">
+            <div>
+                <label for="numItems">Max Items:</label>
+                <input type="number" id="numItems" value="1">
+            </div>
+            <div id="checkbox">
+                <label for="repeat">Repeat Jokes:</label>
+                <input type="checkbox" id="repeat">
+                <span id="checkmark"></span>
+            </div>
+            <div>
+                <label for="category">Category:</label>
+                <select name="Categories" id="category">
+                    <option value="all">all</option>
+                    <option value="animal">animal</option>
+                    <option value="career">career</option>
+                    <option value="dev">dev</option>
+                    <option value="fashion">fashion</option>
+                    <option value="food">food</option>
+                    <option value="history">history</option>
+                    <option value="money">money</option>
+                    <option value="celebrity">celebrity</option>
+                    <option value="movie">movie</option>
+                    <option value="music">music</option>
+                    <option value="science">science</option>
+                    <option value="sport">sport</option>
+                    <option value="travel">travel</option>
+                  </select>
+            </div>
+            <button id="generate">Generate</button>
+        </section>
+
+        <section id="jokeSection">
+            <div id="jokes"></div>
+        </section>
+
+        <section id="teamSection">
+            <div class="flexbox-container-center">
+                <div class="about-chuckster">
+                    <h2>CHUCKSTER</h2>
+                    <p>This project was made by a team of volunteers to exercise agile methodologies and collaborative git environment.</p>
+                    <a href="https://github.com/chingu-voyages/v42-toucans-team-01/" target="_blank">See our repository for more details. <img class="social-icon" src="./images/link-external-02-svgrepo-com.svg" alt="link-img"></a>
+                </div>
+                <div><h2>TEAM</h2></div>
+                <div class="team-members">
+                    <div class="member">
+                        <img class="team-member-photo" src="./images/img-christopher.jpg" alt="christopher-photo">
+                        <h4>Christopher James</h4>
+                        <p>Software Engineer</p>
+                        <div class="social-icons-box">
+                            <a href="https://github.com/gamingbuddhist" target="_blank"><img class="social-icon" src="./images/github-svgrepo-com.svg" alt="github-icon"></a>
+                        </div>
+                    </div>
+                    <div class="member">
+                        <img class="team-member-photo" src="./images/img-amanda.png" alt="amanda-photo">
+                        <h4>Amanda Alexandre</h4>
+                        <p>Product Owner</p>
+                        <div class="social-icons-box">
+                            <a href="https://github.com/amandaalexandre" target="_blank"><img class="social-icon" src="./images/github-svgrepo-com.svg" alt="github-icon"></a>
+                        </div>
+                    </div>
+                    <div class="member">
+                        <img class="team-member-photo" src="./images/img-michel.jpg" alt="michel-photo">
+                        <h4>Michel Adelino</h4>
+                        <p>Front-end Developer</p>
+                        <div class="social-icons-box">
+                            <a href="https://github.com/MichMatrix/" target="_blank"><img class="social-icon" src="./images/github-svgrepo-com.svg" alt="github-icon"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- footer -->
+    <footer>
+        <div>
+          <a href="https://github.com/chingu-voyages/v42-toucans-team-01/">Github</a>
+          <a id="teamFooterButton" href="">Team</a>
+          <a href="https://www.chingu.io/">Chingu</a>
+        </div>
+    </footer>
+
+    <script src="./js/bad_words.js" defer></script>
+    <script src="./js/api_wrapper.js" defer></script>
+    <script src="./js/wrapper_frontend_coupling.js" defer></script>
+    <script src="./js/scripts.js" defer></script>
+</body>
+</html>

@@ -132,9 +132,7 @@ blockquote {
 
 #teamSection {
     display: flex;
-    flex-direction: column;
     font-size: 20px;
-    padding: 20px;
 }
 
 input[type=number] {
@@ -230,11 +228,11 @@ button {
   
 }
 
-.about-chuckster p, .about-chuckster a{
+.about-chuckster p{
     display:flex;
     justify-content: center;
     align-items:center;
-    padding:10px 0px;
+    padding:5px 0;
     
 }
 
@@ -268,7 +266,7 @@ button {
     align-items: center;
     margin: auto;
     flex-direction: column;
-    padding: 10px 70px 0;
+    padding: 5px 70px 0;
 }
 
 .member h2, .member p {
@@ -371,6 +369,10 @@ footer a {
         border: 1px solid #ccc;
         width: 234px;
         height: 45px;
+    }
+
+    .member {
+        padding: 15px 40px 30px;
     }
 
 }

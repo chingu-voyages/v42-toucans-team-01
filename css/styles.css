@@ -237,9 +237,6 @@ button {
     padding:10px 0px;
     
 }
-.inline, .inline a, .inline img {
-    display: flex;
-}
 
 #teamSection h2 {
     font-size: 25px;

@@ -352,6 +352,10 @@ footer a {
     margin: 0 10px;
 }
 
+footer a:hover {
+    color:#98bbd6;
+}
+
 
 /*screens less than 850px*/
 @media screen and (max-width: 850px) {

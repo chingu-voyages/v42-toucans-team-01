@@ -331,5 +331,9 @@ footer a {
         width: 234px;
         height: 45px;
     }
+    
+    #jokeSection {
+        margin: 18px;
+    }
 
 }

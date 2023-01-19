@@ -371,6 +371,11 @@ footer a {
         height: 45px;
     }
 
+    main {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
     .member {
         padding: 15px 40px 30px;
     }

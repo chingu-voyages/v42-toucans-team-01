@@ -109,6 +109,7 @@ main {
 #jokeSection {
     width: 100%;
     padding: 20px;
+    margin: 20px 191px 20px 174px;
 }
 
 #jokes {
@@ -369,6 +370,10 @@ footer a {
         border: 1px solid #ccc;
         width: 234px;
         height: 45px;
+    }
+    
+    #jokeSection {
+        margin: 18px;
     }
 
     main {

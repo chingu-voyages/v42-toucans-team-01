@@ -302,7 +302,6 @@ button {
 
 .social-icons li {
     display: inline-flex;
-    background-color: rgba(#00B5F5, 0.05);
     position: relative;
     font-size: 1.2em;
 }
@@ -353,6 +352,12 @@ footer a {
     margin: 0 10px;
 }
 
+footer a:hover {
+    color:#98bbd6;
+}
+
+
+/*screens less than 850px*/
 @media screen and (max-width: 850px) {
     nav {
         flex-direction: column;
@@ -385,4 +390,15 @@ footer a {
         padding: 15px 40px 30px;
     }
 
+}
+
+
+/*smaller screens less than 350px*/
+@media screen and (max-width: 350px) {
+    .member {
+        padding: 15px 0 30px;
+    }
+    .team-member-photo {
+        max-width: 100%;
+    }
 }

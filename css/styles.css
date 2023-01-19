@@ -1,3 +1,5 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+
 body{
     background-image: linear-gradient(to bottom, #19C1AD, #3C67AC);
     color: #fff;
@@ -130,9 +132,7 @@ blockquote {
 
 #teamSection {
     display: flex;
-    flex-direction: column;
     font-size: 20px;
-    padding: 20px;
 }
 
 input[type=number] {
@@ -228,15 +228,12 @@ button {
   
 }
 
-.about-chuckster p, .about-chuckster a{
+.about-chuckster p{
     display:flex;
     justify-content: center;
     align-items:center;
-    padding:10px 0px;
+    padding:5px 0;
     
-}
-.inline, .inline a, .inline img {
-    display: flex;
 }
 
 #teamSection h2 {
@@ -269,7 +266,7 @@ button {
     align-items: center;
     margin: auto;
     flex-direction: column;
-    padding: 10px 70px 0;
+    padding: 5px 70px 0;
 }
 
 .member h2, .member p {
@@ -284,17 +281,60 @@ button {
     padding-bottom: 10px;
 }
 
-.social-icon{
-    display: flex;
-    width: 30px;
-    height: 30px;
-}
-
 .social-icons-box{
     display: flex;
-    flex-direction: column;
     align-items: center;
     padding-top: 10px;
+}
+
+.social-icons {
+    padding: 0;
+}
+
+.social-icons-box i {
+    color: #fff;
+    position: absolute;
+    top: 10px;
+    left: 13px;
+    transition: all 265ms ease-out;
+}
+
+.social-icons li {
+    display: inline-flex;
+    background-color: rgba(#00B5F5, 0.05);
+    position: relative;
+    font-size: 1.2em;
+}
+
+.social-icons a {
+    display: flex;
+    padding:0 2px;
+}
+
+.social-icons a:before {
+    content: " ";
+    width: 40px;
+    height: 40px;
+    border-radius: 20%;
+    display:flex;
+    background: linear-gradient(45deg, #00B5F5, #002A8F);
+    transition: all 265ms ease-out;
+}
+        
+.social-icons a:hover:before {
+    transform: scale(0);
+    transition: all 265ms ease-in;
+}
+        
+.social-icons a:hover i {
+    transform: scale(2);
+    color: #00B5F5;
+    background: -webkit-linear-gradient(45deg, #65e1e1, #9fc2d7,  #466bd9);
+    -webkit-background-clip: text;
+        /*the standard property 'background-clip' for compatibility when hover*/
+        background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    transition: all 265ms ease-in;
 }
 
 /*footer style*/
@@ -335,5 +375,9 @@ footer a {
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
+    
+    .member {
+        padding: 15px 40px 30px;
     }
+
 }

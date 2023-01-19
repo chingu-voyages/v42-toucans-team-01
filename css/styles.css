@@ -301,7 +301,6 @@ button {
 
 .social-icons li {
     display: inline-flex;
-    background-color: rgba(#00B5F5, 0.05);
     position: relative;
     font-size: 1.2em;
 }

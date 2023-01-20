@@ -1,6 +1,6 @@
 const breadcrumbElement = document.getElementById("breadcrumb");
 const homeButton = document.getElementById("homeButton");
-const ToRandomButton = document.getElementById("redirectToRandomSection");
+const toRandomButton = document.getElementById("redirectToRandomSection");
 const randomButton = document.getElementById("randomButton");
 const teamButton = document.getElementById("teamButton");
 const homeSection = document.getElementById("homeSection");
@@ -48,7 +48,7 @@ homeButton.addEventListener("click", goToHomePage);
 randomButton.addEventListener("click", goToRandomPage);
 teamButton.addEventListener("click", goToTeamPage);
 teamFooterButton.addEventListener("click", goToTeamPage);
-ToRandomButton.addEventListener("click", goToRandomPage);
+toRandomButton.addEventListener("click", goToRandomPage);
 queryInput.addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
     goToSearchPage();

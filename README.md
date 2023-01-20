@@ -17,6 +17,9 @@ User can see jokes according to their category.
 User sees different sections of a same page according to which link they click. 
 
 ### Deploy
-Will be made to Github Pages. 1st deploy hasn't been done yet.
+Deploy was made to [Github Pages](https://chingu-voyages.github.io/v42-toucans-team-01/).
 
-### 
+### Team
+[Chris Busse](https://github.com/gamingbuddhist) - Full Stack Developer
+[Michel Adelino](https://github.com/MichMatrix) - Front End Developer
+[Amanda Vieira](https://github.com/amandaalexandre) - Product Owner

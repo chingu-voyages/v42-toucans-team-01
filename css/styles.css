@@ -255,7 +255,7 @@ button {
     display:flex;
     flex-direction:column;
     align-items:center;
-    margin: 40px auto;
+    margin: auto;
     padding: 0px 30px;
     justify-content: center;
 }
@@ -273,14 +273,12 @@ button {
     display:flex;
     justify-content: center;
     align-items:center;
-    padding:5px 0;
-    
 }
 
 #teamSection h2 {
     font-size: 25px;
     font-weight: 700;
-    padding-bottom:20px;
+    padding-bottom:8px;
 }
 
 #teamSection h4 {

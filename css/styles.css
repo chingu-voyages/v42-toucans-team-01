@@ -109,16 +109,35 @@ main {
 #jokeSection {
     width: 100%;
     padding: 20px;
-    margin: 20px 191px 20px 174px;
+    margin: 15px 196px 25px 199px;
 }
 
 #jokes {
+    padding: 0 30px 10px 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 1rem;
     width: 100%;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+#jokes::-webkit-scrollbar {
+    width: 8px;
+}
+
+#jokes::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+#jokes::-webkit-scrollbar-track {
+    background: #ddd;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    background-clip: padding-box;
 }
 
 blockquote {

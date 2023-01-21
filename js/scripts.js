@@ -12,48 +12,33 @@ const teamFooterButton = document.getElementById("teamFooterButton");
 
 const updateBreadcrumb = (newText) => breadcrumbElement.innerText = newText;
 
-const goToHomePage = () => {
-  updateBreadcrumb("HOME");
-  homeSection.style.display = "block";
-  randomSection.style.display = "none";
-  teamSection.style.display = "none";
-  jokeSection.style.display = "none";
+const pages = {
+  home: new Set([homeSection]),
+  random: new Set([randomSection, jokeSection]),
+  search: new Set([jokeSection]),
+  team: new Set([teamSection])
 }
 
-const goToRandomPage = () => {
-  updateBreadcrumb("RANDOM");
-  homeSection.style.display = "none";
-  randomSection.style.display = "block";
-  teamSection.style.display = "none";
-  jokeSection.style.display = "block";
+// adds all pages to make a set of all sections
+const allPages = Object.values(pages).reduce((acc, val) => new Set([...acc, ...val]), new Set());
+
+const goToPage = (page) => {
+  const pageSections = pages[page];
+  updateBreadcrumb(page.toUpperCase());
+  allPages.forEach(section => section.style.display = "none");
+  pageSections.forEach(section => section.style.display = "block");
 }
 
-const goToSearchPage = () => {
-  updateBreadcrumb("SEARCH");
-  homeSection.style.display = "none";
-  randomSection.style.display = "none";
-  teamSection.style.display = "none";
-  jokeSection.style.display = "block";
-}
-
-const goToTeamPage = () => {
-  updateBreadcrumb("TEAM");
-  homeSection.style.display = "none";
-  randomSection.style.display = "none";
-  teamSection.style.display = "block";
-  jokeSection.style.display = "none";
-}
-
-homeButton.addEventListener("click", goToHomePage);
-randomButton.addEventListener("click", goToRandomPage);
-teamButton.addEventListener("click", goToTeamPage);
-teamFooterButton.addEventListener("click", goToTeamPage);
-toRandomButton.addEventListener("click", goToRandomPage);
+homeButton.addEventListener("click", () => goToPage("home"));
+randomButton.addEventListener("click", () => goToPage("random"));
+teamButton.addEventListener("click", () => goToPage("team"));
+teamFooterButton.addEventListener("click", () => goToPage("team"));
+toRandomButton.addEventListener("click", () => goToPage("random"));
 queryInput.addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
-    goToSearchPage();
+    goToPage("search");
     getSearchResults();
   }
 });
 
-goToHomePage();
+goToPage("home");

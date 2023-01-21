@@ -50,5 +50,11 @@ queryInput.addEventListener("keypress", (event) => {
     getSearchResults();
   }
 });
+numItemsInput.addEventListener("focusout", () => {
+  if (numItemsInput.value < 1) {
+    numItemsInput.value = 1;
+    chuckWrapper.numItems = 1;
+  }
+});
 
 goToPage("home");

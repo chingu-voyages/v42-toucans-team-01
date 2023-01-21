@@ -26,6 +26,9 @@ const goToPage = (page) => {
   updateBreadcrumb(page.toUpperCase());
   allPages.forEach(section => section.style.display = "none");
   pages[page].forEach(section => section.style.display = "block");
+  if (page === "random") {
+    jokeSection.style.margin = "15px 86px 25px 35px";
+  }
 }
 
 homeButton.addEventListener("click", () => goToPage("home"));

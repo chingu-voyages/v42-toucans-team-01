@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/reset.css">
-    <link rel="shortcut icon" href="favicon.ico" type="./images/favicon.icon">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="favicon.icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
@@ -23,6 +23,7 @@
                     <li class="nav-links" id="breadcrumb"></li>
                 </ul>
                 <ul class="nav-links">
+                    <li id="homeButton"><a href="#">Home</a></li>
                     <li id="randomButton"><a href="#">Random</a></li>
                     <li id="teamButton"><a href="#">Team</a></li>
                     <div class="search-box">
@@ -38,6 +39,19 @@
     
     <!-- main  -->
     <main>
+        <section id="homeSection">
+            <div class="home-box">
+                <div>
+                    <img src="./images/chuck-img.svg" alt="Chuck-Norris-image">
+                </div>
+                <div class="home-slogan">
+                    <h1>Enjoy the wisdom and awesomeness of Chuck Norris facts now!</h1>
+                    <div>
+                        <button id="redirectToRandomSection">RANDOM FACT</button>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section id="randomSection">
             <div>
                 <label for="numItems">Max Items:</label>
@@ -79,7 +93,6 @@
                 <div class="about-chuckster">
                     <h2>CHUCKSTER</h2>
                     <p>This project was made by a team of volunteers to exercise agile methodologies and collaborative git environment.</p>
-                    <a href="https://github.com/chingu-voyages/v42-toucans-team-01/" target="_blank">See our repository for more details. <img class="social-icon" src="./images/link-external-02-svgrepo-com.svg" alt="link-img"></a>
                 </div>
                 <div><h2>TEAM</h2></div>
                 <div class="team-members">
@@ -88,7 +101,11 @@
                         <h4>Christopher James</h4>
                         <p>Software Engineer</p>
                         <div class="social-icons-box">
-                            <a href="https://github.com/gamingbuddhist" target="_blank"><img class="social-icon" src="./images/github-svgrepo-com.svg" alt="github-icon"></a>
+                            <ul class="social-icons">
+                                <li><a href="https://github.com/gamingbuddhist" target="_blank"><i class="fa fa-github"></i></a></li>
+                                <li><a href="https://twitter.com/GamingBuddhist" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/chris-busse-96a7911b3/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
                         </div>
                     </div>
                     <div class="member">
@@ -96,7 +113,10 @@
                         <h4>Amanda Alexandre</h4>
                         <p>Product Owner</p>
                         <div class="social-icons-box">
-                            <a href="https://github.com/amandaalexandre" target="_blank"><img class="social-icon" src="./images/github-svgrepo-com.svg" alt="github-icon"></a>
+                            <ul class="social-icons">
+                                <li><a href="https://github.com/amandaalexandre" target="_blank"><i class="fa fa-github"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/amandavieiradev" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
                         </div>
                     </div>
                     <div class="member">
@@ -104,7 +124,11 @@
                         <h4>Michel Adelino</h4>
                         <p>Front-end Developer</p>
                         <div class="social-icons-box">
-                            <a href="https://github.com/MichMatrix/" target="_blank"><img class="social-icon" src="./images/github-svgrepo-com.svg" alt="github-icon"></a>
+                            <ul class="social-icons">
+                                <li><a href="https://github.com/MichMatrix/" target="_blank"><i class="fa fa-github"></i></a></li>
+                                <li><a href="https://twitter.com/chelino_" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/michel-adelino/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>

@@ -23,10 +23,9 @@ const pages = {
 const allPages = Object.values(pages).reduce((acc, val) => new Set([...acc, ...val]), new Set());
 
 const goToPage = (page) => {
-  const pageSections = pages[page];
   updateBreadcrumb(page.toUpperCase());
   allPages.forEach(section => section.style.display = "none");
-  pageSections.forEach(section => section.style.display = "block");
+  pages[page].forEach(section => section.style.display = "block");
 }
 
 homeButton.addEventListener("click", () => goToPage("home"));

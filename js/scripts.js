@@ -9,6 +9,15 @@ const jokeSection = document.getElementById("jokeSection");
 const teamSection = document.getElementById("teamSection");
 const teamFooterButton = document.getElementById("teamFooterButton");
 
+const resizeJokes = () => {
+  if (window.innerWidth >= 850 && randomSection.style.display === "block") {
+    jokeSection.style.margin = "15px 86px 25px 35px";
+  } else if (window.innerWidth < 850) {
+    jokeSection.style.margin = "15px 15px 25px 15px";
+  } else {
+    jokeSection.style.margin = "20px 191px 20px 174px";
+  }
+}
 
 const updateBreadcrumb = (newText) => breadcrumbElement.innerText = newText;
 
@@ -26,8 +35,10 @@ const goToPage = (page) => {
   updateBreadcrumb(page.toUpperCase());
   allPages.forEach(section => section.style.display = "none");
   pages[page].forEach(section => section.style.display = "block");
+  resizeJokes();
 }
 
+window.addEventListener("resize", resizeJokes);
 homeButton.addEventListener("click", () => goToPage("home"));
 randomButton.addEventListener("click", () => goToPage("random"));
 teamButton.addEventListener("click", () => goToPage("team"));

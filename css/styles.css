@@ -122,7 +122,9 @@ main {
 }
 
 blockquote {
-    border: 1px solid #fff;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
     border-radius: 20px;
     padding: 20px;
     font-size: 20px;

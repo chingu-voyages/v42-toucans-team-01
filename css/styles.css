@@ -265,6 +265,8 @@ input[type=checkbox]:checked:after {
     border-radius: 50px;
     gap: 10px;
     margin: 20px;
+    font-weight: 400;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     text-align: center;
     padding: 10px;
     font-size: 20px;
@@ -278,7 +280,7 @@ input[type=checkbox]:checked:after {
     box-sizing: border-box;
     height: 380px;
     background: rgba(0, 0, 0, 0.08);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
     border-radius: 20px;
     padding: 10px;
     align-items: center;
@@ -304,9 +306,7 @@ input[type=checkbox]:checked:after {
 }
 
 .home-slogan button {
-    margin: 40px 0px;
-    font-weight: 400;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    margin: 40px 0 !important;
 }
 
 .home-slogan button:hover {

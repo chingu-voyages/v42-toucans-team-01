@@ -259,7 +259,7 @@ input[type=checkbox]:checked:after {
     transition: 0.3s ease;
 }
 
-#generate {
+#generate, #redirectToRandomSection {
     background-color: #FF8524;
     color: white;
     border-radius: 50px;

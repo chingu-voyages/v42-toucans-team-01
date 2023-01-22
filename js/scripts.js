@@ -28,7 +28,6 @@ const selectCategory = (category) => {
 
 const expandCategoryOptions = () => {
   categoryOptions.style.height = "300px";
-  categoryOptions.focus();
 }
 
 const updateBreadcrumb = (newText) => breadcrumbElement.innerText = newText;

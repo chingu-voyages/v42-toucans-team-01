@@ -24,10 +24,12 @@ const selectCategory = (category) => {
   categorySelect.value = category;
   categorySelect.innerText = category;
   categoryOptions.style.height = "0px";
+  categoryOptions.style.marginTop = "0";
 }
 
 const expandCategoryOptions = () => {
   categoryOptions.style.height = "300px";
+  categoryOptions.style.marginTop = "10px";
 }
 
 const updateBreadcrumb = (newText) => breadcrumbElement.innerText = newText;

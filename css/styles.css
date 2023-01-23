@@ -271,6 +271,16 @@ input[type=checkbox]:checked:after {
     padding: 10px;
     font-size: 20px;
     width: 50%;
+    transition: all 0.08s ease-in-out;
+}
+
+#generate:hover, #redirectToRandomSection:hover {
+    background-color: #d76b15;
+}
+
+#generate:active, #redirectToRandomSection:active {
+    background-color: #b85a0f;
+    transform: translateY(2px) scale(0.98);
 }
 
 /*home section style*/
@@ -307,10 +317,6 @@ input[type=checkbox]:checked:after {
 
 .home-slogan button {
     margin: 40px 0 !important;
-}
-
-.home-slogan button:hover {
-    background-color: #d76b15;
 }
 
 /*team section style*/

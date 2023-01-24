@@ -8,6 +8,7 @@ const randomSection = document.getElementById("randomSection");
 const jokeSection = document.getElementById("jokeSection");
 const teamSection = document.getElementById("teamSection");
 const teamFooterButton = document.getElementById("teamFooterButton");
+const categoryOptions = document.getElementById("categoryOptions");
 
 const resizeJokes = () => {
   if (window.innerWidth >= 850 && randomSection.style.display === "block") {
@@ -17,6 +18,18 @@ const resizeJokes = () => {
   } else {
     jokeSection.style.margin = "20px 191px 20px 174px";
   }
+}
+
+const selectCategory = (category) => {
+  categorySelect.value = category;
+  categorySelect.innerText = category;
+  categoryOptions.style.height = "0px";
+  categoryOptions.style.marginTop = "0";
+}
+
+const expandCategoryOptions = () => {
+  categoryOptions.style.height = "300px";
+  categoryOptions.style.marginTop = "10px";
 }
 
 const updateBreadcrumb = (newText) => breadcrumbElement.innerText = newText;
@@ -39,6 +52,8 @@ const goToPage = (page) => {
 }
 
 window.addEventListener("resize", resizeJokes);
+categoryOptions.childNodes.forEach(category => category.addEventListener("click", () => selectCategory(category.value)));
+categorySelect.addEventListener("click", expandCategoryOptions);
 homeButton.addEventListener("click", () => goToPage("home"));
 randomButton.addEventListener("click", () => goToPage("random"));
 teamButton.addEventListener("click", () => goToPage("team"));

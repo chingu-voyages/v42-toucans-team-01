@@ -465,8 +465,20 @@ footer a:hover {
 }
 
 
-/*screens less than 850px*/
-@media screen and (max-width: 850px) {
+/*screens less than 950px*/
+@media screen and (max-width: 950px) {
+
+    /*main*/
+
+    main {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: center !important;
+    }
+
+    /*navbar*/
+
     nav {
         flex-direction: column;
     }
@@ -484,23 +496,120 @@ footer a:hover {
         width: 234px;
         height: 45px;
     }
-    #jokeSection {
-        margin: 18px;
-    }
+
+    /*home section*/
+    
     main {
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        text-align: center !important;
     }
+
+    /*nav bar*/
+
+    nav {
+        flex-direction: column;
+    }
+    .nav-links{
+        flex-direction: column;
+    }
+    nav a, nav input[type=text] {
+      float: none;
+      text-align: left;
+      margin: auto;
+
+    }
+    nav input[type=text] {
+        border: 1px solid #ccc;
+        width: 234px;
+        height: 45px;
+    }
+
+    /*home section*/
+
+    .home-box img {
+        max-width:270px;
+    }
+    
+    .home-box {
+        flex-direction:column;
+        margin: 40px auto;
+        height:590px;
+        width:350px;
+        padding:30px;
+    }
+    
+    .home-slogan {
+        margin: 20px auto;
+    }
+    
+    .home-slogan h1 {
+        font-size: 35px;
+        max-width: 292px;
+    }
+
+    .home-slogan {
+        width: 300px;
+    }
+    
+    .home-slogan #redirectToRandomSection {
+        font-size:17px;
+    }
+
+    /*jose section*/
+
+    #jokeSection {
+        margin: 18px;
+    }
+
+    /*team section*/
+
     .member {
         padding: 15px 40px 30px;
     }
 }
 
 
-/*smaller screens less than 350px*/
-@media screen and (max-width: 350px) {
+/*smaller screens less than 400px*/
+@media screen and (max-width: 400px) {
+
+    main {
+        text-align: center;
+        justify-content: center;
+    }
+
+    /*home section*/
+
+    .home-box img {
+        max-width:215px;
+    }
+    
+    .home-box {
+        margin: 40px auto;
+        height:480px;
+        width:275px;
+    }
+    
+    .home-slogan {
+        margin: 20px auto;
+        width: 220px;
+    }
+    
+    .home-slogan h1 {
+        font-size: 26px;
+        width: 217px;
+       
+    }
+    
+    .home-slogan #redirectToRandomSection {
+        font-size: 15px;
+        justify-content: center;
+        position:absolute;
+        left:25%
+    }
+
+    /*team section*/
+
     .member {
         padding: 15px 0 30px;
     }

@@ -465,8 +465,8 @@ footer a:hover {
 }
 
 
-/*screens less than 850px*/
-@media screen and (max-width: 850px) {
+/*screens less than 950px*/
+@media screen and (max-width: 950px) {
 
     /*main*/
 
@@ -499,7 +499,60 @@ footer a:hover {
 
     /*home section*/
     
+    main {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    /*nav bar*/
+
+    nav {
+        flex-direction: column;
+    }
+    .nav-links{
+        flex-direction: column;
+    }
+    nav a, nav input[type=text] {
+      float: none;
+      text-align: left;
+      margin: auto;
+
+    }
+    nav input[type=text] {
+        border: 1px solid #ccc;
+        width: 234px;
+        height: 45px;
+    }
+
+    /*home section*/
+
+    .home-box img {
+        max-width:270px;
+    }
     
+    .home-box {
+        flex-direction:column;
+        margin: 40px auto;
+        height:590px;
+        width:350px;
+        padding:30px;
+    }
+    
+    .home-slogan {
+        margin: 20px auto;
+    }
+    
+    .home-slogan h1 {
+        font-size: 35px;
+        max-width: 292px;
+    }
+    
+    .home-slogan #redirectToRandomSection {
+        font-size:17px;
+        position: absolute;
+        max-width: 290px;
+    }
 
     /*jose section*/
 

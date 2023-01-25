@@ -570,11 +570,43 @@ footer a:hover {
 }
 
 
-/*smaller screens less than 350px*/
-@media screen and (max-width: 350px) {
+/*smaller screens less than 400px*/
+@media screen and (max-width: 400px) {
+
+    main {
+        text-align: center;
+        justify-content: center;
+    }
 
     /*home section*/
 
+    .home-box img {
+        max-width:215px;
+    }
+    
+    .home-box {
+        margin: 40px auto;
+        height:480px;
+        width:275px;
+    }
+    
+    .home-slogan {
+        margin: 20px auto;
+        width: 220px;
+    }
+    
+    .home-slogan h1 {
+        font-size: 26px;
+        width: 217px;
+       
+    }
+    
+    .home-slogan #redirectToRandomSection {
+        font-size: 15px;
+        justify-content: center;
+        position:absolute;
+        left:25%
+    }
 
     /*team section*/
 

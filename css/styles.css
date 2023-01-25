@@ -547,11 +547,13 @@ footer a:hover {
         font-size: 35px;
         max-width: 292px;
     }
+
+    .home-slogan {
+        width: 300px;
+    }
     
     .home-slogan #redirectToRandomSection {
         font-size:17px;
-        position: absolute;
-        max-width: 290px;
     }
 
     /*jose section*/

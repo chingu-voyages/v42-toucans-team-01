@@ -429,7 +429,30 @@ footer a:hover {
 
     /*home section*/
 
-
+    .home-box img {
+        max-width:270px;
+    }
+    .home-box {
+        flex-direction:column;
+        margin: 40px auto;
+        height:590px;
+        width:350px;
+        padding:30px;
+    }
+    
+    .home-slogan {
+        margin: 20px auto;
+        width: 320px;
+    }
+    
+    .home-slogan h1 {
+        font-size: 35px;
+       
+    }
+    
+    .home-slogan button {
+        font-size:17px;
+    }
 
     /*joke section*/
 

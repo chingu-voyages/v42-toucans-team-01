@@ -76,19 +76,12 @@ goToPage("home");
 
 
 /*function for responsive navbar menu*/
-homeButton.addEventListener("click", () => responsiveMenu());
+
 function responsiveMenu() {
-  var mobileMenu = document.getElementById("top-nav");
+  const mobileMenu = document.getElementById("top-nav");
   if (mobileMenu.className === "nav-links") {
     mobileMenu.className += " responsive";
   } else {
     mobileMenu.className = "nav-links";
-  }
-
-  var navBar = document.getElementsByClassName("navbar");
-  if (navBar === "navbar") {
-    navBar.className += " responsive-nav";
-  } else {
-    navBar.className = "navbar";
   }
 }

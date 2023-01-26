@@ -499,6 +499,10 @@ footer a:hover {
 
     /*he "responsive" class is added to the nav-links with JavaScript when the user clicks on the icon.*/
 
+    .nav-links.responsive {
+        margin-bottom:30px;
+    }
+
     .nav-links.responsive li, .nav-links.responsive .search-box {
         float: none;
         display: block;

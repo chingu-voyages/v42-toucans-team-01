@@ -514,14 +514,8 @@ footer a:hover {
         align-items: center;
     }
 
-    nav .responsive-nav {
-        flex-direction: column;
-    }
-
     nav .responsive li, nav .responsive input[type=text] {
-        text-align: left;
         margin: auto;
-
     }
 
     nav .responsive input[type=text] {
@@ -533,20 +527,6 @@ footer a:hover {
     .nav-links{
         display: block;
     }
-
-    nav a, nav input[type=text] {
-      float: none;
-      text-align: left;
-      margin: auto;
-
-    }
-    
-    nav input[type=text] {
-        border: 1px solid #ccc;
-        width: 234px;
-        height: 45px;
-    }
-
 
     /*main section*/
     

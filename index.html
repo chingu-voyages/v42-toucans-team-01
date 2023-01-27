@@ -17,12 +17,18 @@
     <header>
         <!-- nav bar -->
         <div>
-            <nav>
-                <ul>
-                    <li class="logo"><a href="index.html">Chuckster</a></li>
-                    <li class="nav-links" id="breadcrumb"></li>
-                </ul>
-                <ul class="nav-links">
+            <nav class="navbar">
+                <div class="logo-and-menu-btn-container">
+                    <ul>
+                        <li class="logo"><a href="index.html">Chuckster</a></li>
+                        <li class="nav-links" id="breadcrumb"></li>
+                    </ul>
+                    <a href="#" class="mobile-menu" onclick="responsiveMenu()">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+                
+                <ul class="nav-links" id="top-nav">
                     <li id="homeButton"><a href="#">Home</a></li>
                     <li id="randomButton"><a href="#">Random</a></li>
                     <li id="teamButton"><a href="#">Team</a></li>

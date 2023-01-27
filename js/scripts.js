@@ -9,6 +9,7 @@ const jokeSection = document.getElementById("jokeSection");
 const teamSection = document.getElementById("teamSection");
 const teamFooterButton = document.getElementById("teamFooterButton");
 const categoryOptions = document.getElementById("categoryOptions");
+const mobileMenu = document.getElementById("top-nav");
 
 const resizeJokes = () => {
   if (window.innerWidth >= 850 && randomSection.style.display === "block") {
@@ -44,10 +45,12 @@ const pages = {
 // adds all pages to make a set of all sections
 const allPages = Object.values(pages).reduce((acc, val) => new Set([...acc, ...val]), new Set());
 
+
 const goToPage = (page) => {
   updateBreadcrumb(page.toUpperCase());
   allPages.forEach(section => section.style.display = "none");
   pages[page].forEach(section => section.style.display = "block");
+  mobileMenu.className = "nav-links";
   resizeJokes();
 }
 
@@ -73,3 +76,14 @@ numItemsInput.addEventListener("focusout", () => {
 });
 
 goToPage("home");
+
+
+/*function for responsive navbar menu*/
+
+function responsiveMenu() {
+  if (mobileMenu.className === "nav-links") {
+    mobileMenu.className += " responsive";
+  } else {
+    mobileMenu.className = "nav-links";
+  }
+}

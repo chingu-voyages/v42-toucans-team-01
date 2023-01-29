@@ -97,6 +97,7 @@ class ChuckWrapper {
     
     this.jokes = [];
     this.jokesDiv.innerHTML = "";
+    this.jokesDiv.style.minHeight = Math.min(this.numItems * 10, 70) + "vh";
     let fails = 0;
 
     while (this.jokes.length < this.numItems && fails < this._failLimit) {
@@ -109,13 +110,16 @@ class ChuckWrapper {
       this._seenJokes.add(joke.id);
       let blockquote = document.createElement("blockquote");
       blockquote.innerText = joke.value;
+      blockquote.classList.add("new-joke");
       this.jokes.push(joke.value);
       this.jokesDiv.appendChild(blockquote);
+
     }
 
     if (this.jokes.length === 0) {
       let blockquote = document.createElement("blockquote");
       blockquote.innerText = "No jokes found";
+      blockquote.classList.add("new-joke");
       this.jokes.push("No jokes found");
       this.jokesDiv.appendChild(blockquote);
     }
@@ -128,6 +132,7 @@ class ChuckWrapper {
 
     this.jokes = [];
     this.jokesDiv.innerHTML = "";
+    this.jokesDiv.style.minHeight = Math.min(this.numItems * 10, 70) + "vh";
     let fails = 0;
 
     while (this.jokes.length < this.numItems && fails < this._failLimit) {
@@ -140,6 +145,7 @@ class ChuckWrapper {
       this._seenJokes.add(joke.id);
       let blockquote = document.createElement("blockquote");
       blockquote.innerText = joke.value;
+      blockquote.classList.add("new-joke");
       this.jokes.push(joke.value);
       this.jokesDiv.appendChild(blockquote);
     }
@@ -147,6 +153,7 @@ class ChuckWrapper {
     if (this.jokes.length === 0) {
       let blockquote = document.createElement("blockquote");
       blockquote.innerText = "No jokes found";
+      blockquote.classList.add("new-joke");
       this.jokes.push("No jokes found");
       this.jokesDiv.appendChild(blockquote);
     }
@@ -160,6 +167,7 @@ class ChuckWrapper {
     query = encodeURIComponent(query.toLowerCase());
     this.jokes = [];
     this.jokesDiv.innerHTML = "";
+    this.jokesDiv.style.minHeight = Math.min(this.numItems * 10, 70) + "vh";
     let search = await this._fetchJokesByQuery(query);
     let jokes = search.result;
 
@@ -170,6 +178,7 @@ class ChuckWrapper {
     this.jokes.forEach(joke => {
         let blockquote = document.createElement("blockquote");
         blockquote.innerText = joke;
+        blockquote.classList.add("new-joke");
         this.jokesDiv.appendChild(blockquote);
     });
     this._isGenerating = false;

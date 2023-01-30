@@ -15,6 +15,7 @@ PUBLIC VARIABLES:
 chuckWrapper.numItems - number of jokes to fetch (default 1)
 chuckWrapper.repeat - whether to allow repeat jokes (default false)
 chuckWrapper.jokes - array of jokes to display (default [])
+chuckWrapper.jokesDiv - div to display jokes in (default null)
 -----------------------------------------------------------------------------------------------------------------------
 PUBLIC METHODS (coroutines):
 
@@ -43,9 +44,10 @@ generateButton.addEventListener("click", async () => {
 
 class ChuckWrapper {
   constructor() {
+    this.jokesDiv = document.getElementById("jokes");
+    this.jokes = [];                 // array of jokes to display
     this.numItems = 1;               // number of jokes to fetch
     this.repeat = false;             // allow joke repetition during a session
-    this.jokes = [];                 // array of jokes to display
     this._failLimit = 10;            // number of failed attempts to fetch a joke (prevents infinite loop and API abuse)
     this._seenJokes = new Set();     // set of joke ids seen during a session
     this._isGenerating = false;      // whether jokes are currently being generated
@@ -92,7 +94,10 @@ class ChuckWrapper {
   async getJokes() {
     if (this._isGenerating) return;
     this._isGenerating = true;
+    
     this.jokes = [];
+    this.jokesDiv.innerHTML = "";
+    this.jokesDiv.style.minHeight = Math.min(this.numItems * 10, 70) + "vh";
     let fails = 0;
 
     while (this.jokes.length < this.numItems && fails < this._failLimit) {
@@ -103,10 +108,21 @@ class ChuckWrapper {
         continue;
       }
       this._seenJokes.add(joke.id);
+      let blockquote = document.createElement("blockquote");
+      blockquote.innerText = joke.value;
+      blockquote.classList.add("new-joke");
       this.jokes.push(joke.value);
+      this.jokesDiv.appendChild(blockquote);
+
     }
 
-    if (this.jokes.length === 0) this.jokes.push("No jokes found");
+    if (this.jokes.length === 0) {
+      let blockquote = document.createElement("blockquote");
+      blockquote.innerText = "No jokes found";
+      blockquote.classList.add("new-joke");
+      this.jokes.push("No jokes found");
+      this.jokesDiv.appendChild(blockquote);
+    }
     this._isGenerating = false;
   }
 
@@ -115,6 +131,8 @@ class ChuckWrapper {
     this._isGenerating = true;
 
     this.jokes = [];
+    this.jokesDiv.innerHTML = "";
+    this.jokesDiv.style.minHeight = Math.min(this.numItems * 10, 70) + "vh";
     let fails = 0;
 
     while (this.jokes.length < this.numItems && fails < this._failLimit) {
@@ -125,10 +143,20 @@ class ChuckWrapper {
         continue;
       }
       this._seenJokes.add(joke.id);
+      let blockquote = document.createElement("blockquote");
+      blockquote.innerText = joke.value;
+      blockquote.classList.add("new-joke");
       this.jokes.push(joke.value);
+      this.jokesDiv.appendChild(blockquote);
     }
 
-    if (this.jokes.length === 0) this.jokes.push("No jokes found");
+    if (this.jokes.length === 0) {
+      let blockquote = document.createElement("blockquote");
+      blockquote.innerText = "No jokes found";
+      blockquote.classList.add("new-joke");
+      this.jokes.push("No jokes found");
+      this.jokesDiv.appendChild(blockquote);
+    }
     this._isGenerating = false;
   }
 
@@ -138,6 +166,8 @@ class ChuckWrapper {
 
     query = encodeURIComponent(query.toLowerCase());
     this.jokes = [];
+    this.jokesDiv.innerHTML = "";
+    this.jokesDiv.style.minHeight = Math.min(this.numItems * 10, 70) + "vh";
     let search = await this._fetchJokesByQuery(query);
     let jokes = search.result;
 
@@ -145,6 +175,12 @@ class ChuckWrapper {
     this.jokes = this.jokes.filter(joke => !this._hasBadWord(joke));
 
     if (this.jokes.length === 0) this.jokes.push("No jokes found");
+    this.jokes.forEach(joke => {
+        let blockquote = document.createElement("blockquote");
+        blockquote.innerText = joke;
+        blockquote.classList.add("new-joke");
+        this.jokesDiv.appendChild(blockquote);
+    });
     this._isGenerating = false;
   }
 }

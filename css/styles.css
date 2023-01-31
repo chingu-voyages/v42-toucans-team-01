@@ -601,7 +601,7 @@ footer a:hover {
     /*he "responsive" class is added to the nav-links with JavaScript when the user clicks on the icon.*/
 
     .nav-links.responsive {
-        margin-bottom:30px;
+        margin-bottom:50px;
     }
 
     .nav-links.responsive li, .nav-links.responsive .search-box {
@@ -618,7 +618,7 @@ footer a:hover {
     .navbar {
         align-items: stretch;
         flex-direction: column;
-        gap: 2rem;
+        gap: 1.2rem;
     }
 
     .logo-and-menu-btn-container {
@@ -647,34 +647,105 @@ footer a:hover {
     }
 
     /*home section*/
-
-    .home-box img {
-        max-width:270px;
-    }
     
     .home-box {
         flex-direction:column;
         margin-bottom: 60px;
-        height:590px;
+        height: 450px;
         width:350px;
-        padding:30px;
+        padding: 0 30px;
+        margin-top: -37px;
+    }
+
+    /*home section - carousel - slide 1*/
+    .home-box .image1-carousel{
+    border-radius: 100%;
+    margin: auto;
+    width: 215px;
+    margin-top: -5px;
     }
     
     .home-slogan {
-        margin: 20px auto;
+        width: 300px;
+        margin-top:15px;
     }
     
     .home-slogan h1 {
-        font-size: 35px;
+        font-size: 24px;
         max-width: 292px;
-    }
-
-    .home-slogan {
-        width: 300px;
     }
     
     .home-slogan #redirectToRandomSection {
         font-size:17px;
+       
+    }
+   .home-slogan button {
+    margin: 15px 0 50px 0 !important;
+    }
+
+    /*home section - carousel - slide 2*/
+    .home-slogan2 {
+    width: 290px;
+    display:flex;
+    margin-top:-40px;
+    }
+    
+    .home-slogan2 h1 {
+        font-size: 24px;
+        padding:20px 0;
+        margin:auto;
+    }
+
+    .image2-carousel {
+        margin-top:30px;
+        max-width: 230px;
+    }
+
+    /*home section - carousel - prev and next button slideshow*/
+    .prev, .next {
+        cursor: pointer;
+        position:relative;
+        width: auto;
+        margin: auto;
+        padding: 14px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.7s ease;
+        border-radius: 0 4px 4px 0;
+        user-select: none;
+        background: rgb(0 0 0 / 0.08);
+    }
+
+    .prev {
+        right:54.5%;
+    }
+    
+    .next {
+        left:54.5%;
+        border-radius: 4px 0 0 4px;
+    }
+    
+    .prevCard1 {
+        top: 44.8%;
+    }
+    .prevCard2 {
+         top: 44.9%;
+    }
+    
+    .nextCard1 {
+        bottom:56.5%;
+    }
+    
+    .nextCard2 {
+        bottom:51.6%;
+    }
+
+    /*home section - dot container below carousel*/
+    .dot-container {
+        text-align: center;
+        margin-top: -40px;
+        padding-bottom: 60px;
     }
 
     /*jose section*/

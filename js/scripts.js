@@ -10,6 +10,8 @@ const teamSection = document.getElementById("teamSection");
 const teamFooterButton = document.getElementById("teamFooterButton");
 const categoryOptions = document.getElementById("categoryOptions");
 const mobileMenu = document.getElementById("top-nav");
+const slides = document.getElementsByClassName("mySlides");
+const dots = document.getElementsByClassName("dot");
 
 const resizeJokes = () => {
   if (window.innerWidth >= 850 && randomSection.style.display === "block") {
@@ -86,4 +88,34 @@ function responsiveMenu() {
   } else {
     mobileMenu.className = "nav-links";
   }
+}
+
+/* function for show corousel */
+
+let slideIndex = 1;
+showSlides(slideIndex);
+
+/* next/previous controls */
+function plusSlides(number) {
+  showSlides(slideIndex += number);
+}
+
+/* thumbnail image controls */
+function currentSlide(number) {
+  showSlides(slideIndex = number);
+}
+
+function showSlides(number) {
+  let index;
+ 
+  if (number > slides.length) {slideIndex = 1}
+  if (number < 1) {slideIndex = slides.length}
+  for (index = 0; index < slides.length; index++) {
+    slides[index].style.display = "none";
+  }
+  for (index = 0; index < dots.length; index++) {
+    dots[index].className = dots[index].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "flex";
+  dots[slideIndex-1].className += " active";
 }

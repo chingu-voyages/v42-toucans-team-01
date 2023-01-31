@@ -569,7 +569,6 @@ footer a:hover {
 }
 
 
-/*screens less than 950px*/
 @media screen and (max-width: 950px) {
 
     /*main*/
@@ -772,24 +771,26 @@ footer a:hover {
 
     /*home section*/
 
+    /*home section - carousel -*/
     .home-box img {
         max-width:215px;
     }
     
     .home-box {
-        height:480px;
+        height: 450px;
         width:275px;
+        padding-bottom:40px;
     }
     
+    /*home section - carousel - slide 1*/
     .home-slogan {
-        margin: 20px auto;
-        width: 220px;
+        margin-top:15px;
+        width: 210px;
     }
     
     .home-slogan h1 {
-        font-size: 26px;
-        width: 217px;
-       
+        font-size: 20px;
+        width: 213px;
     }
     
     .home-slogan #redirectToRandomSection {
@@ -797,6 +798,47 @@ footer a:hover {
         justify-content: center;
         position:absolute;
         left:25%
+    }
+    
+    /*home section - carousel - slide 2*/
+    .home-slogan2 {
+        padding-top: 5px;
+        padding-bottom: 30px;
+    }
+    
+    .home-slogan2 h1 {
+        font-size: 21px;
+        padding:10px 20px;
+       
+    }
+
+     .image2-carousel {
+        margin-bottom:-40px;
+    }
+
+    /*home section - carousel - prev and next button slideshow*/
+     .prev {
+        right:55.8%;
+    }
+    
+    .next {
+        left:55.8%;
+        border-radius: 4px 0 0 4px;
+    }
+    
+    .prevCard1 {
+        top: 50.5%;
+    }
+    .prevCard2 {
+         top: 51.6%;
+    }
+    
+    .nextCard1 {
+        bottom:33.9%;
+    }
+    
+    .nextCard2 {
+        bottom:34.9%;
     }
 
     /*team section*/

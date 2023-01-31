@@ -3,7 +3,9 @@
 ## :closed_book: Description
 This app was made by a group of volunteers to exercise agile development, "commit discipline" and a collaborative git environment. Developers learned how to deal with PRs, code reviews, and the Scrum methodology.
 
-## Style Guide
+## :book: Docs
+[Notion docs](https://uneven-governor-047.notion.site/Chuck-Norris-App-f1130682b513440d9cbb33b8f791fa2f)
+
 [Figma layout](https://www.figma.com/file/CRs4vxKppbfGkFI92YqCsG/Chuck-App?node-id=0%3A1&t=QvvuCeZmV6f0fYDk-0)
 
 ## :star: Features
@@ -23,7 +25,7 @@ User can search jokes via text.
 User sees different sections of a same page according to which link they click. 
 
 ### Deploy
-Deploy was made to [Github Pages](https://chingu-voyages.github.io/v42-toucans-team-01/).
+Deploy was made to [Github Pages](https://chingu-voyages.github.io/v42-toucans-team-01/) and updated weekly after each sprint planning / sprint review session.
 
 ## :camera: More screenshots
 ![image](https://user-images.githubusercontent.com/15349795/215792721-72ad37e6-8682-4fc7-97e2-858323207e46.png)

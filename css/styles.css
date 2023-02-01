@@ -650,28 +650,30 @@ footer a:hover {
     .home-box {
         flex-direction:column;
         margin-bottom: 60px;
-        height: 450px;
+        height: 370px;
         width:350px;
         padding: 0 30px;
-        margin-top: -37px;
+        margin-top: -43px;
     }
 
     /*home section - carousel - slide 1*/
     .home-box .image1-carousel{
-    border-radius: 100%;
-    margin: auto;
-    width: 215px;
-    margin-top: -5px;
+        position:relative;
+        border-radius: 100%;
+        margin: auto;
+        width: 180px;
+        bottom:25px;
     }
     
     .home-slogan {
         width: 300px;
-        margin-top:15px;
     }
     
     .home-slogan h1 {
-        font-size: 24px;
-        max-width: 292px;
+        font-size:19px;
+        max-width: 250px;
+        position: relative;
+        left: 23px
     }
     
     .home-slogan #redirectToRandomSection {
@@ -679,25 +681,27 @@ footer a:hover {
        
     }
    .home-slogan button {
-    margin: 15px 0 50px 0 !important;
+        margin: 15px 0 50px 0 !important;
+        position: relative;
+        right: 5px;
     }
 
     /*home section - carousel - slide 2*/
     .home-slogan2 {
-    width: 290px;
+    width: 297px;
     display:flex;
     margin-top:-40px;
     }
     
     .home-slogan2 h1 {
-        font-size: 24px;
+        font-size: 20px;
         padding:20px 0;
         margin:auto;
     }
 
     .image2-carousel {
-        margin-top:30px;
-        max-width: 230px;
+        margin-top:50px;
+         width: 200px;
     }
 
     /*home section - carousel - prev and next button slideshow*/
@@ -733,17 +737,17 @@ footer a:hover {
     }
     
     .nextCard1 {
-        bottom:56.5%;
+        bottom:62.1%;
     }
     
     .nextCard2 {
-        bottom:51.6%;
+        bottom:50%;
     }
 
     /*home section - dot container below carousel*/
     .dot-container {
         text-align: center;
-        margin-top: -40px;
+        margin-top: -47px;
         padding-bottom: 60px;
     }
 

@@ -777,11 +777,11 @@ footer a:hover {
 
     /*home section - carousel -*/
     .home-box img {
-        max-width:215px;
+        max-width:190px;
     }
     
     .home-box {
-        height: 450px;
+        height: 370px;
         width:275px;
         padding-bottom:40px;
     }
@@ -793,8 +793,9 @@ footer a:hover {
     }
     
     .home-slogan h1 {
-        font-size: 20px;
+        font-size: 18px;
         width: 213px;
+        margin-left:-30px;
     }
     
     .home-slogan #redirectToRandomSection {
@@ -806,12 +807,11 @@ footer a:hover {
     
     /*home section - carousel - slide 2*/
     .home-slogan2 {
-        padding-top: 5px;
-        padding-bottom: 30px;
+        padding: 0 20px;
     }
     
     .home-slogan2 h1 {
-        font-size: 21px;
+        font-size: 19px;
         padding:10px 20px;
        
     }
@@ -834,15 +834,15 @@ footer a:hover {
         top: 50.5%;
     }
     .prevCard2 {
-         top: 51.6%;
+         top: 50.6%;
     }
     
     .nextCard1 {
-        bottom:33.9%;
+        bottom:41.1%;
     }
     
     .nextCard2 {
-        bottom:34.9%;
+        bottom:41.9%;
     }
 
     /*team section*/

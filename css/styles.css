@@ -315,17 +315,18 @@ input[type=checkbox]:checked:after {
     margin: 15px 0;
 }
 
-.home-box img {
+/*home section - carousel - slide 1*/
+.image1-carousel{
     border-radius: 100%;
-    margin: 0 40px;
-    width: 350px;
+    margin: 0 40px 0 20px;
+    width: 340px;
 }
 
 .home-slogan {
     margin-left: 10px;
     display: flex;
     flex-direction: column;
-    width: 460px;
+    width: 450px;
 }
 
 .home-slogan h1 {
@@ -336,6 +337,91 @@ input[type=checkbox]:checked:after {
 .home-slogan button {
     margin: 40px 0 !important;
 }
+
+/*home section - carousel - slide 2*/
+.box2 {
+    display: flex;
+}
+
+.image2-carousel {
+    width: 320px;
+    padding-left:40px;
+    padding-right: 25px;
+}
+
+.home-slogan2 {
+    width: 540px;
+    display:flex;
+    flex-direction:column;
+}
+
+.home-slogan2 h1 {
+    font-size: 34px;
+    display: flex;
+    padding:20px 0;
+    margin-left:22px;
+}
+
+/*home section - carousel - hide the images by default*/
+.mySlides {
+    display: none;
+}
+
+/*home section - carousel - prev and next buttons*/
+.prev, .next {
+    cursor: pointer;
+    width: auto;
+    margin-bottom: 22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.7s ease;
+    border-radius: 0 5px 5px 0;
+    user-select: none;
+  }
+  
+.next {
+    border-radius: 5px 0 0 5px;
+}
+  
+  /* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+  
+/*home section - carousel - the dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+  
+.active, .dot:hover {
+    background-color: #717171;
+}
+  
+.dot-container {
+    text-align:center;
+}
+
+
+/*home section - carousel - fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+  
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
 
 /*team section style*/
 

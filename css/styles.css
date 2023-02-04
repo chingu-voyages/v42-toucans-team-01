@@ -642,7 +642,7 @@ footer a:hover {
     main {
         flex-direction: column;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: center;
     }
 
     /*home section*/
@@ -771,6 +771,7 @@ footer a:hover {
     main {
         text-align: center;
         justify-content: center;
+        align-items: center;
     }
 
     /*home section*/

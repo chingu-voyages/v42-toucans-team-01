@@ -12,16 +12,11 @@ const categoryOptions = document.getElementById("categoryOptions");
 const mobileMenu = document.getElementById("top-nav");
 const slides = document.getElementsByClassName("mySlides");
 const dots = document.getElementsByClassName("dot");
-
-const resizeJokes = () => {
-  if (window.innerWidth >= 850 && randomSection.style.display === "block") {
-    jokeSection.style.margin = "15px 86px 25px 35px";
-  } else if (window.innerWidth < 850) {
-    jokeSection.style.margin = "15px 15px 25px 15px";
-  } else {
-    jokeSection.style.margin = "20px 191px 20px 174px";
-  }
-}
+const jokes = document.getElementById("jokes");
+const jokeContainer = document.getElementById("jokeContainer");
+const pageIndex = document.getElementById("pageIndex");
+const numerator = document.getElementById("numerator");
+const denominator = document.getElementById("denominator");
 
 const selectCategory = (category) => {
   categorySelect.value = category;
@@ -53,10 +48,8 @@ const goToPage = (page) => {
   allPages.forEach(section => section.style.display = "none");
   pages[page].forEach(section => section.style.display = "block");
   mobileMenu.className = "nav-links";
-  resizeJokes();
 }
 
-window.addEventListener("resize", resizeJokes);
 categoryOptions.childNodes.forEach(category => category.addEventListener("click", () => selectCategory(category.value)));
 categorySelect.addEventListener("click", expandCategoryOptions);
 homeButton.addEventListener("click", () => goToPage("home"));

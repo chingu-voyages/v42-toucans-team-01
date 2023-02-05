@@ -132,7 +132,7 @@ class ChuckWrapper {
       blockquote.classList.add("new-joke");
       this.jokes.push("No jokes found");
       this.jokesDiv.appendChild(blockquote);
-      this.caroJoke.innerText = "No jokes found";
+      this.caroJoke.innerText = `<a id="prevJoke" onclick="prevJoke()">&#10094;</a>No jokes found<a id="nextJoke" onclick="nextJoke()">&#10095;</a>`;
       this.denominator.innerText = this.jokes.length;
     }
     this._isGenerating = false;
@@ -175,7 +175,7 @@ class ChuckWrapper {
       blockquote.classList.add("new-joke");
       this.jokes.push("No jokes found");
       this.jokesDiv.appendChild(blockquote);
-      this.caroJoke.innerText = "No jokes found";
+      this.caroJoke.innerHTML = `<a id="prevJoke" onclick="prevJoke()">&#10094;</a>No jokes found<a id="nextJoke" onclick="nextJoke()">&#10095;</a>`;
       this.denominator.innerText = this.jokes.length;
     }
     this._isGenerating = false;

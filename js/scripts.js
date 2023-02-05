@@ -12,11 +12,8 @@ const categoryOptions = document.getElementById("categoryOptions");
 const mobileMenu = document.getElementById("top-nav");
 const slides = document.getElementsByClassName("mySlides");
 const dots = document.getElementsByClassName("dot");
-const jokes = document.getElementById("jokes");
-const jokeContainer = document.getElementById("jokeContainer");
-const pageIndex = document.getElementById("pageIndex");
+const caroJoke = document.getElementById("caroJoke");
 const numerator = document.getElementById("numerator");
-const denominator = document.getElementById("denominator");
 
 const selectCategory = (category) => {
   categorySelect.value = category;
@@ -69,9 +66,29 @@ numItemsInput.addEventListener("focusout", () => {
     chuckWrapper.numItems = 1;
   }
 });
+const prevJoke = () => {
+  if (chuckWrapper.jokeIndex > 0) {
+    chuckWrapper.jokeIndex--;
+  } else {
+    chuckWrapper.jokeIndex = chuckWrapper.jokes.length - 1;
+  }
+  updateJoke();
+  numerator.innerText = chuckWrapper.jokeIndex + 1;
+};
 
-goToPage("home");
+const nextJoke = () => {
+  if (chuckWrapper.jokeIndex < chuckWrapper.jokes.length - 1) {
+    chuckWrapper.jokeIndex++;
+  } else {
+    chuckWrapper.jokeIndex = 0;
+  }
+  updateJoke();
+  numerator.innerText = chuckWrapper.jokeIndex + 1;
+};
 
+const updateJoke = () => {
+  caroJoke.innerHTML = `<a id="prevJoke" onclick="prevJoke()">&#10094;</a>${chuckWrapper.jokes[chuckWrapper.jokeIndex]}<a id="nextJoke" onclick="nextJoke()">&#10095;</a>`;
+}
 
 /*function for responsive navbar menu*/
 
@@ -112,3 +129,5 @@ function showSlides(number) {
   slides[slideIndex-1].style.display = "flex";
   dots[slideIndex-1].className += " active";
 }
+
+goToPage("home");

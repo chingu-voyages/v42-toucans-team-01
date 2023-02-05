@@ -147,7 +147,7 @@ main {
     background-clip: padding-box;
 }
 
-.prev-joke, .next-joke {
+#prevJoke, #nextJoke {
     cursor: pointer;
     width: auto;
     position: relative;
@@ -162,17 +162,17 @@ main {
     top: 10px
 }
 
-.prev-joke {
+#prevJoke {
     right: 20px;
     border-radius: 0 4px 4px 0;
 }
 
-.next-joke {
+#nextJoke {
     left: 20px;
 }
 
 /* On hover, add a black background color with a little bit see-through */
-.prev-joke:hover, .next-joke:hover {
+#prevJoke:hover, #nextJoke:hover {
     background-color: rgba(0,0,0,0.8);
 }
 
@@ -202,15 +202,11 @@ blockquote {
     width: 100%;
 }
 
-.caro-joke {
+#caroJoke {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-}
-
-.caro-joke a {
-    display: block;
 }
 
 @keyframes fade-up {

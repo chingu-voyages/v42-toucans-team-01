@@ -112,7 +112,7 @@ main {
 #jokeSection {
     width: 100%;
     padding: 20px;
-    margin: 15px 196px 25px 199px;
+    margin: 15px 86px 25px 35px;
 }
 
 #jokes {
@@ -125,6 +125,10 @@ main {
     width: 100%;
     max-height: 70vh;
     overflow-y: auto;
+}
+
+#jokeContainer, #pageIndex {
+    display: none;
 }
 
 #jokes::-webkit-scrollbar {
@@ -143,6 +147,49 @@ main {
     background-clip: padding-box;
 }
 
+#prevJoke, #nextJoke {
+    cursor: pointer;
+    width: auto;
+    position: relative;
+    margin-bottom: 22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.7s ease;
+    user-select: none;
+    border-radius: 4px 0 0 4px;
+    top: 10px
+}
+
+#prevJoke {
+    right: 20px;
+    border-radius: 0 4px 4px 0;
+}
+
+#nextJoke {
+    left: 20px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+#prevJoke:hover, #nextJoke:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.joke-box {
+    display: flex;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    align-items: center;
+    margin: 15px 0;
+}
+
+#pageIndex {
+    margin-top: 5px;
+}
+
 blockquote {
     box-sizing: border-box;
     background: rgba(0, 0, 0, 0.08);
@@ -153,6 +200,13 @@ blockquote {
     font-weight: 300;
     text-align: center;
     width: 100%;
+}
+
+#caroJoke {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 @keyframes fade-up {
@@ -656,6 +710,13 @@ footer a:hover {
         margin-top: -43px;
     }
 
+    .joke-box {
+        position:relative;
+        margin: auto;
+        width: 95%;
+        bottom: 5px;
+    }
+
     /*home section - carousel - slide 1*/
     .home-box .image1-carousel{
         position:relative;
@@ -755,6 +816,14 @@ footer a:hover {
 
     #jokeSection {
         margin: 18px;
+    }
+
+    #jokeContainer, #pageIndex {
+        display: block;
+    }
+
+    #jokes {
+        display: none;
     }
 
     /*team section*/

@@ -700,7 +700,7 @@ footer a:hover {
     }
 
     .image2-carousel {
-        margin-top:50px;
+        margin-top:40px;
          width: 200px;
     }
 
@@ -741,7 +741,7 @@ footer a:hover {
     }
     
     .nextCard2 {
-        bottom:50%;
+        bottom:47.3%;
     }
 
     /*home section - dot container below carousel*/
@@ -789,7 +789,7 @@ footer a:hover {
     
     /*home section - carousel - slide 1*/
     .home-slogan {
-        margin-top:15px;
+        margin-top:5px;
         width: 210px;
     }
     
@@ -818,7 +818,7 @@ footer a:hover {
     }
 
      .image2-carousel {
-        margin-bottom:-40px;
+        margin-top: 45px
     }
 
     /*home section - carousel - prev and next button slideshow*/
@@ -839,11 +839,11 @@ footer a:hover {
     }
     
     .nextCard1 {
-        bottom:41.1%;
+        bottom:38.5%;
     }
     
     .nextCard2 {
-        bottom:41.9%;
+        bottom:52.4%;
     }
 
     /*team section*/

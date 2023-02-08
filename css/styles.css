@@ -521,17 +521,11 @@ input[type=checkbox]:checked:after {
     padding: 0.4rem;
 }
 
+/*highlight github icon*/
 .github {
     background-color: black;
     border-radius:6px;
 }
-/* .social-icons-box .fa-twitter {
-    color: #fff;
-}
-
-.fa .fa-github{
-    color: #000000;
-} */
 
 .social-icons li {
     display: inline-flex;

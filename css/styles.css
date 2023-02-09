@@ -479,10 +479,20 @@ input[type=checkbox]:checked:after {
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 2rem 1.5rem;
-    border-radius:17px;
-    box-shadow:5px 5px 20px black;
+    padding: 1.7rem 1.6rem;
+    background: rgba(0, 0, 0, 0.07);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    transition: all 265ms ease-out;
 }
+
+.member:hover {
+    padding: 1.9rem 1.8rem;
+    margin-bottom:20px;
+    background: rgba(0, 0, 0, 0.04);
+    transition: all 265ms ease-out;
+}
+
 
 .member h2, .member p {
     display: flex;
@@ -519,15 +529,17 @@ input[type=checkbox]:checked:after {
     border-radius:6px;
 }
 
-/*highlight github icon*/
+/*github icon*/
 .github {
     background-color: black;
 }
 
+/*twitter icon*/
 .twitter {
     background-color:#2196F3;
 }
 
+/*linkedin icon*/
 .linkedin {
     background-color:#0e63a7;
 }

@@ -489,10 +489,9 @@ input[type=checkbox]:checked:after {
 .member:hover {
     padding: 1.9rem 1.8rem;
     margin-bottom:20px;
-    background: rgba(0, 0, 0, 0.04);
+    background: rgba(0, 0, 0, 0.05);
     transition: all 265ms ease-out;
 }
-
 
 .member h2, .member p {
     display: flex;
@@ -787,7 +786,11 @@ footer a:hover {
     }
 
     .member {
-        padding: 15px 40px 30px;
+        padding: 1.8rem 2.4rem;
+    }
+
+    .member:hover {
+        padding: 2rem 2.8rem;
     }
 }
 
@@ -876,8 +879,13 @@ footer a:hover {
     /*team section*/
 
     .member {
-        padding: 15px 0 30px;
+        padding: 1.6rem 1.8rem;
     }
+
+    .member:hover {
+        padding: 1.8rem 2rem;
+    }
+
     .team-member-photo {
         max-width: 100%;
     }

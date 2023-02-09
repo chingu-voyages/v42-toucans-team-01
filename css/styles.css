@@ -487,9 +487,8 @@ input[type=checkbox]:checked:after {
 }
 
 .member:hover {
-    padding: 1.9rem 1.8rem;
-    margin-bottom:20px;
-    background: rgba(0, 0, 0, 0.05);
+    transform: translateY(-5px) scale(1.05);
+    background: rgba(0, 0, 0, 0.15);
     transition: all 265ms ease-out;
 }
 

@@ -45,6 +45,10 @@ generateButton.addEventListener("click", async () => {
 class ChuckWrapper {
   constructor() {
     this.jokesDiv = document.getElementById("jokes");
+    this.caroJoke = document.getElementById("caroJoke");
+    this.numerator = document.getElementById("numerator");
+    this.denominator = document.getElementById("denominator");
+    this.jokeIndex = 0;
     this.jokes = [];                 // array of jokes to display
     this.numItems = 1;               // number of jokes to fetch
     this.repeat = false;             // allow joke repetition during a session
@@ -99,6 +103,8 @@ class ChuckWrapper {
     this.jokesDiv.innerHTML = "";
     this.jokesDiv.style.minHeight = Math.min(this.numItems * 10, 70) + "vh";
     let fails = 0;
+    this.jokeIndex = 0;
+    this.numerator.innerText = 1;
 
     while (this.jokes.length < this.numItems && fails < this._failLimit) {
       let joke = await this._fetchJoke();
@@ -113,7 +119,11 @@ class ChuckWrapper {
       blockquote.classList.add("new-joke");
       this.jokes.push(joke.value);
       this.jokesDiv.appendChild(blockquote);
-
+      
+      if (this.jokes.length === 1) {
+        this.caroJoke.innerHTML = `<a id="prevJoke" onclick="prevJoke()">&#10094;</a>${joke.value}<a id="nextJoke" onclick="nextJoke()">&#10095;</a>`;
+      }
+      this.denominator.innerText = this.jokes.length;
     }
 
     if (this.jokes.length === 0) {
@@ -122,6 +132,8 @@ class ChuckWrapper {
       blockquote.classList.add("new-joke");
       this.jokes.push("No jokes found");
       this.jokesDiv.appendChild(blockquote);
+      this.caroJoke.innerText = `<a id="prevJoke" onclick="prevJoke()">&#10094;</a>No jokes found<a id="nextJoke" onclick="nextJoke()">&#10095;</a>`;
+      this.denominator.innerText = this.jokes.length;
     }
     this._isGenerating = false;
   }
@@ -134,6 +146,8 @@ class ChuckWrapper {
     this.jokesDiv.innerHTML = "";
     this.jokesDiv.style.minHeight = Math.min(this.numItems * 10, 70) + "vh";
     let fails = 0;
+    this.jokeIndex = 0;
+    this.numerator.innerText = 1;
 
     while (this.jokes.length < this.numItems && fails < this._failLimit) {
       let joke = await this._fetchJokeByCategory(category);
@@ -148,6 +162,11 @@ class ChuckWrapper {
       blockquote.classList.add("new-joke");
       this.jokes.push(joke.value);
       this.jokesDiv.appendChild(blockquote);
+
+      if (this.jokes.length === 1) {
+        this.caroJoke.innerHTML = `<a id="prevJoke" onclick="prevJoke()">&#10094;</a>${joke.value}<a id="nextJoke" onclick="nextJoke()">&#10095;</a>`;
+      }
+      this.denominator.innerText = this.jokes.length;
     }
 
     if (this.jokes.length === 0) {
@@ -156,6 +175,8 @@ class ChuckWrapper {
       blockquote.classList.add("new-joke");
       this.jokes.push("No jokes found");
       this.jokesDiv.appendChild(blockquote);
+      this.caroJoke.innerHTML = `<a id="prevJoke" onclick="prevJoke()">&#10094;</a>No jokes found<a id="nextJoke" onclick="nextJoke()">&#10095;</a>`;
+      this.denominator.innerText = this.jokes.length;
     }
     this._isGenerating = false;
   }
@@ -163,6 +184,8 @@ class ChuckWrapper {
   async getJokesByQuery(query) {
     if (this._isGenerating) return;
     this._isGenerating = true;
+    this.jokeIndex = 0;
+    this.numerator.innerText = 1;
 
     query = encodeURIComponent(query.toLowerCase());
     this.jokes = [];
@@ -181,6 +204,8 @@ class ChuckWrapper {
         blockquote.classList.add("new-joke");
         this.jokesDiv.appendChild(blockquote);
     });
+    this.caroJoke.innerHTML = `<a id="prevJoke" onclick="prevJoke()">&#10094;</a>${this.jokes[0]}<a id="nextJoke" onclick="nextJoke()">&#10095;</a>`;
+    this.denominator.innerText = this.jokes.length;
     this._isGenerating = false;
   }
 }

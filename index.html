@@ -46,16 +46,34 @@
     <!-- main  -->
     <main>
         <section id="homeSection">
-            <div class="home-box">
-                <div>
-                    <img src="./images/chuck-img.svg" alt="Chuck-Norris-image">
-                </div>
-                <div class="home-slogan">
-                    <h1>Enjoy the wisdom and awesomeness of Chuck Norris facts now!</h1>
+            <div class="slideshow-container">
+                <div class="home-box mySlides fade">
+                    <a class="prev prevCard1" onclick="plusSlides(-1)">&#10094;</a>
                     <div>
-                        <button id="redirectToRandomSection">RANDOM FACT</button>
+                        <img class="image1-carousel" src="./images/chuck-img.svg" alt="Chuck-Norris-image">
                     </div>
+                    <div class="home-slogan">
+                        <h1>Enjoy the wisdom and awesomeness of Chuck Norris facts now!</h1>
+                        <div>
+                            <button id="redirectToRandomSection">RANDOM FACT</button>
+                        </div>
+                    </div>
+                    <a class="next nextCard1" onclick="plusSlides(1)">&#10095;</a>
                 </div>
+                <div class="home-box mySlides fade box2">
+                    <a class="prev prevCard2" onclick="plusSlides(-1)">&#10094;</a>
+                    <div class="home-slogan2">
+                        <h1>You can select one category if you want or all of them randomly.</h1>
+                        <h1>So tell me which one do you want to and your request’s a order!</h1>
+                    </div>
+                    <img class="image2-carousel" src="./images/show-development.svg" alt="show-development-draw">
+                    <a class="next nextCard2" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+            </div>
+            <!-- The dots/circles -->
+            <div class="dot-container">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
             </div>
         </section>
         <section id="randomSection">
@@ -93,6 +111,17 @@
 
         <section id="jokeSection">
             <div id="jokes"></div>
+            <div id="jokeContainer">
+                <div class="fade">
+                    <blockquote id="caroJoke">
+                        <a id="prevJoke">&#10094;</a>
+                        <a id="nextJoke">&#10095;</a>
+                    </blockquote>
+                </div>
+            </div>
+            <div id="pageIndex">
+                <span id="numerator">1</span>/<span id="denominator">1</span>
+            </div>
         </section>
 
         <section id="teamSection">
@@ -104,14 +133,14 @@
                 <div><h2>TEAM</h2></div>
                 <div class="team-members">
                     <div class="member">
-                        <img class="team-member-photo" src="./images/img-christopher.jpg" alt="christopher-photo">
+                        <img class="team-member-photo" src="./images/img-christopher.png" alt="christopher-photo">
                         <h4>Christopher James</h4>
                         <p>Software Engineer</p>
                         <div class="social-icons-box">
                             <ul class="social-icons">
-                                <li><a href="https://github.com/gamingbuddhist" target="_blank"><i class="fa fa-github"></i></a></li>
-                                <li><a href="https://twitter.com/GamingBuddhist" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="https://www.linkedin.com/in/chris-busse-96a7911b3/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="https://github.com/gamingbuddhist" target="_blank"><i class="fa fa-github github"></i></a></li>
+                                <li><a href="https://twitter.com/GamingBuddhist" target="_blank"><i class="fa fa-twitter twitter"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/chris-busse-96a7911b3/" target="_blank"><i class="fa fa-linkedin linkedin"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -121,20 +150,20 @@
                         <p>Product Owner</p>
                         <div class="social-icons-box">
                             <ul class="social-icons">
-                                <li><a href="https://github.com/amandaalexandre" target="_blank"><i class="fa fa-github"></i></a></li>
-                                <li><a href="https://www.linkedin.com/in/amandavieiradev" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="https://github.com/amandaalexandre" target="_blank"><i class="fa fa-github github"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/amandavieiradev" target="_blank"><i class="fa fa-linkedin linkedin"></i></a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="member">
-                        <img class="team-member-photo" src="./images/img-michel.jpg" alt="michel-photo">
+                        <img class="team-member-photo" src="./images/img-michel.png" alt="michel-photo">
                         <h4>Michel Adelino</h4>
                         <p>Front-end Developer</p>
                         <div class="social-icons-box">
                             <ul class="social-icons">
-                                <li><a href="https://github.com/MichMatrix/" target="_blank"><i class="fa fa-github"></i></a></li>
-                                <li><a href="https://twitter.com/chelino_" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="https://www.linkedin.com/in/michel-adelino/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="https://github.com/MichMatrix/" target="_blank"><i class="fa fa-github github"></i></a></li>
+                                <li><a href="https://twitter.com/chelino_" target="_blank"><i class="fa fa-twitter twitter"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/michel-adelino/" target="_blank"><i class="fa fa-linkedin linkedin"></i></a></li>
                             </ul>
                         </div>
                     </div>

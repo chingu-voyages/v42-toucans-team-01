@@ -112,7 +112,7 @@ main {
 #jokeSection {
     width: 100%;
     padding: 20px;
-    margin: 15px 196px 25px 199px;
+    margin: 15px 86px 25px 35px;
 }
 
 #jokes {
@@ -125,6 +125,10 @@ main {
     width: 100%;
     max-height: 70vh;
     overflow-y: auto;
+}
+
+#jokeContainer, #pageIndex {
+    display: none;
 }
 
 #jokes::-webkit-scrollbar {
@@ -143,6 +147,49 @@ main {
     background-clip: padding-box;
 }
 
+#prevJoke, #nextJoke {
+    cursor: pointer;
+    width: auto;
+    position: relative;
+    margin-bottom: 22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.7s ease;
+    user-select: none;
+    border-radius: 4px 0 0 4px;
+    top: 10px
+}
+
+#prevJoke {
+    right: 20px;
+    border-radius: 0 4px 4px 0;
+}
+
+#nextJoke {
+    left: 20px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+#prevJoke:hover, #nextJoke:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.joke-box {
+    display: flex;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    align-items: center;
+    margin: 15px 0;
+}
+
+#pageIndex {
+    margin-top: 5px;
+}
+
 blockquote {
     box-sizing: border-box;
     background: rgba(0, 0, 0, 0.08);
@@ -153,6 +200,13 @@ blockquote {
     font-weight: 300;
     text-align: center;
     width: 100%;
+}
+
+#caroJoke {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 @keyframes fade-up {
@@ -315,17 +369,18 @@ input[type=checkbox]:checked:after {
     margin: 15px 0;
 }
 
-.home-box img {
+/*home section - carousel - slide 1*/
+.image1-carousel{
     border-radius: 100%;
-    margin: 0 40px;
-    width: 350px;
+    margin: 0 40px 0 20px;
+    width: 340px;
 }
 
 .home-slogan {
     margin-left: 10px;
     display: flex;
     flex-direction: column;
-    width: 460px;
+    width: 450px;
 }
 
 .home-slogan h1 {
@@ -336,6 +391,91 @@ input[type=checkbox]:checked:after {
 .home-slogan button {
     margin: 40px 0 !important;
 }
+
+/*home section - carousel - slide 2*/
+.box2 {
+    display: flex;
+}
+
+.image2-carousel {
+    width: 320px;
+    padding-left:40px;
+    padding-right: 25px;
+}
+
+.home-slogan2 {
+    width: 540px;
+    display:flex;
+    flex-direction:column;
+}
+
+.home-slogan2 h1 {
+    font-size: 34px;
+    display: flex;
+    padding:20px 0;
+    margin-left:22px;
+}
+
+/*home section - carousel - hide the images by default*/
+.mySlides {
+    display: none;
+}
+
+/*home section - carousel - prev and next buttons*/
+.prev, .next {
+    cursor: pointer;
+    width: auto;
+    margin-bottom: 22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.7s ease;
+    border-radius: 0 5px 5px 0;
+    user-select: none;
+  }
+  
+.next {
+    border-radius: 5px 0 0 5px;
+}
+  
+  /* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+  
+/*home section - carousel - the dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+  
+.active, .dot:hover {
+    background-color: #717171;
+}
+  
+.dot-container {
+    text-align:center;
+}
+
+
+/*home section - carousel - fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+  
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
 
 /*team section style*/
 
@@ -379,8 +519,9 @@ input[type=checkbox]:checked:after {
     display:flex;
     flex-direction:row;
     align-items:center;
-    flex-wrap: wrap;
     justify-content: space-between;
+    gap: 2.5rem;
+    padding: 1rem 0 2.5rem;
 }
 
 .team-members p {
@@ -391,9 +532,18 @@ input[type=checkbox]:checked:after {
 .member {
     display: flex;
     align-items: center;
-    margin: auto;
     flex-direction: column;
-    padding: 5px 70px 0;
+    padding: 1.7rem 1.6rem;
+    background: rgba(0, 0, 0, 0.07);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    transition: all 265ms ease-out;
+}
+
+.member:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: rgba(0, 0, 0, 0.15);
+    transition: all 265ms ease-out;
 }
 
 .member h2, .member p {
@@ -412,18 +562,38 @@ input[type=checkbox]:checked:after {
     display: flex;
     align-items: center;
     padding-top: 10px;
+    justify-content: center;
 }
+
 
 .social-icons {
     padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .social-icons-box i {
-    color: #fff;
-    position: absolute;
-    top: 10px;
-    left: 13px;
+    align-items:center;
     transition: all 265ms ease-out;
+    justify-content: center;
+    padding: 0.4rem;
+    border-radius:6px;
+}
+
+/*github icon*/
+.github {
+    background-color: black;
+}
+
+/*twitter icon*/
+.twitter {
+    background-color:#2196F3;
+}
+
+/*linkedin icon*/
+.linkedin {
+    background-color:#0e63a7;
 }
 
 .social-icons li {
@@ -434,22 +604,13 @@ input[type=checkbox]:checked:after {
 
 .social-icons a {
     display: flex;
-    padding:0 2px;
+    padding: 2px 6px;
 }
 
 .social-icons a:before {
     content: " ";
-    width: 40px;
-    height: 40px;
-    border-radius: 20%;
     display:flex;
-    background: linear-gradient(45deg, #00B5F5, #002A8F);
     transition: all 265ms ease-out;
-}
-        
-.social-icons a:hover:before {
-    transform: scale(0);
-    transition: all 265ms ease-in;
 }
         
 .social-icons a:hover i {
@@ -483,7 +644,6 @@ footer a:hover {
 }
 
 
-/*screens less than 950px*/
 @media screen and (max-width: 950px) {
 
     /*main*/
@@ -515,7 +675,7 @@ footer a:hover {
     /*he "responsive" class is added to the nav-links with JavaScript when the user clicks on the icon.*/
 
     .nav-links.responsive {
-        margin-bottom:30px;
+        margin-bottom:50px;
     }
 
     .nav-links.responsive li, .nav-links.responsive .search-box {
@@ -532,7 +692,7 @@ footer a:hover {
     .navbar {
         align-items: stretch;
         flex-direction: column;
-        gap: 2rem;
+        gap: 1.2rem;
     }
 
     .logo-and-menu-btn-container {
@@ -557,38 +717,120 @@ footer a:hover {
     main {
         flex-direction: column;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: center;
     }
 
     /*home section*/
-
-    .home-box img {
-        max-width:270px;
-    }
     
     .home-box {
         flex-direction:column;
         margin-bottom: 60px;
-        height:590px;
+        height: 370px;
         width:350px;
-        padding:30px;
-    }
-    
-    .home-slogan {
-        margin: 20px auto;
-    }
-    
-    .home-slogan h1 {
-        font-size: 35px;
-        max-width: 292px;
+        padding: 0 30px;
+        margin-top: -43px;
     }
 
+    .joke-box {
+        position:relative;
+        margin: auto;
+        width: 95%;
+        bottom: 5px;
+    }
+
+    /*home section - carousel - slide 1*/
+    .home-box .image1-carousel{
+        position:relative;
+        border-radius: 100%;
+        margin: auto;
+        width: 180px;
+        bottom:25px;
+    }
+    
     .home-slogan {
         width: 300px;
     }
     
+    .home-slogan h1 {
+        font-size:19px;
+        max-width: 250px;
+        position: relative;
+        left: 23px
+    }
+    
     .home-slogan #redirectToRandomSection {
         font-size:17px;
+       
+    }
+   .home-slogan button {
+        margin: 15px 0 50px 0 !important;
+        position: relative;
+        right: 5px;
+    }
+
+    /*home section - carousel - slide 2*/
+    .home-slogan2 {
+    width: 297px;
+    display:flex;
+    margin-top:-40px;
+    }
+    
+    .home-slogan2 h1 {
+        font-size: 20px;
+        padding:20px 0;
+        margin:auto;
+    }
+
+    .image2-carousel {
+        margin-top:40px;
+         width: 200px;
+    }
+
+    /*home section - carousel - prev and next button slideshow*/
+    .prev, .next {
+        cursor: pointer;
+        position:relative;
+        width: auto;
+        margin: auto;
+        padding: 14px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.7s ease;
+        border-radius: 0 4px 4px 0;
+        user-select: none;
+        background: rgb(0 0 0 / 0.08);
+    }
+
+    .prev {
+        right:54.5%;
+    }
+    
+    .next {
+        left:54.5%;
+        border-radius: 4px 0 0 4px;
+    }
+    
+    .prevCard1 {
+        top: 44.8%;
+    }
+    .prevCard2 {
+         top: 44.9%;
+    }
+    
+    .nextCard1 {
+        bottom:62.1%;
+    }
+    
+    .nextCard2 {
+        bottom:47.3%;
+    }
+
+    /*home section - dot container below carousel*/
+    .dot-container {
+        text-align: center;
+        margin-top: -47px;
+        padding-bottom: 20px;
     }
 
     /*jose section*/
@@ -597,10 +839,26 @@ footer a:hover {
         margin: 18px;
     }
 
+    #jokeContainer, #pageIndex {
+        display: block;
+    }
+
+    #jokes {
+        display: none;
+    }
+
     /*team section*/
 
+    .team-members {
+        flex-direction:column;
+    }
+
     .member {
-        padding: 15px 40px 30px;
+        padding: 1.8rem 2.4rem;
+    }
+
+    .member:hover {
+        padding: 2rem 2.8rem;
     }
 }
 
@@ -611,28 +869,32 @@ footer a:hover {
     main {
         text-align: center;
         justify-content: center;
+        align-items: center;
     }
 
     /*home section*/
 
+    /*home section - carousel -*/
     .home-box img {
-        max-width:215px;
+        max-width:190px;
     }
     
     .home-box {
-        height:480px;
+        height: 370px;
         width:275px;
+        padding-bottom:40px;
     }
     
+    /*home section - carousel - slide 1*/
     .home-slogan {
-        margin: 20px auto;
-        width: 220px;
+        margin-top:5px;
+        width: 210px;
     }
     
     .home-slogan h1 {
-        font-size: 26px;
-        width: 217px;
-       
+        font-size: 18px;
+        width: 213px;
+        margin-left:-30px;
     }
     
     .home-slogan #redirectToRandomSection {
@@ -641,12 +903,57 @@ footer a:hover {
         position:absolute;
         left:25%
     }
+    
+    /*home section - carousel - slide 2*/
+    .home-slogan2 {
+        padding: 0 20px;
+    }
+    
+    .home-slogan2 h1 {
+        font-size: 19px;
+        padding:10px 20px;
+       
+    }
+
+     .image2-carousel {
+        margin-top: 45px
+    }
+
+    /*home section - carousel - prev and next button slideshow*/
+     .prev {
+        right:55.8%;
+    }
+    
+    .next {
+        left:55.8%;
+        border-radius: 4px 0 0 4px;
+    }
+    
+    .prevCard1 {
+        top: 50.5%;
+    }
+    .prevCard2 {
+         top: 50.6%;
+    }
+    
+    .nextCard1 {
+        bottom:38.5%;
+    }
+    
+    .nextCard2 {
+        bottom:52.4%;
+    }
 
     /*team section*/
 
     .member {
-        padding: 15px 0 30px;
+        padding: 1.6rem 1.8rem;
     }
+
+    .member:hover {
+        padding: 1.8rem 2rem;
+    }
+
     .team-member-photo {
         max-width: 100%;
     }

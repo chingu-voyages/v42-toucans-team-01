@@ -10,16 +10,10 @@ const teamSection = document.getElementById("teamSection");
 const teamFooterButton = document.getElementById("teamFooterButton");
 const categoryOptions = document.getElementById("categoryOptions");
 const mobileMenu = document.getElementById("top-nav");
-
-const resizeJokes = () => {
-  if (window.innerWidth >= 850 && randomSection.style.display === "block") {
-    jokeSection.style.margin = "15px 86px 25px 35px";
-  } else if (window.innerWidth < 850) {
-    jokeSection.style.margin = "15px 15px 25px 15px";
-  } else {
-    jokeSection.style.margin = "20px 191px 20px 174px";
-  }
-}
+const slides = document.getElementsByClassName("mySlides");
+const dots = document.getElementsByClassName("dot");
+const caroJoke = document.getElementById("caroJoke");
+const numerator = document.getElementById("numerator");
 
 const selectCategory = (category) => {
   categorySelect.value = category;
@@ -51,10 +45,8 @@ const goToPage = (page) => {
   allPages.forEach(section => section.style.display = "none");
   pages[page].forEach(section => section.style.display = "block");
   mobileMenu.className = "nav-links";
-  resizeJokes();
 }
 
-window.addEventListener("resize", resizeJokes);
 categoryOptions.childNodes.forEach(category => category.addEventListener("click", () => selectCategory(category.value)));
 categorySelect.addEventListener("click", expandCategoryOptions);
 homeButton.addEventListener("click", () => goToPage("home"));
@@ -74,9 +66,29 @@ numItemsInput.addEventListener("focusout", () => {
     chuckWrapper.numItems = 1;
   }
 });
+const prevJoke = () => {
+  if (chuckWrapper.jokeIndex > 0) {
+    chuckWrapper.jokeIndex--;
+  } else {
+    chuckWrapper.jokeIndex = chuckWrapper.jokes.length - 1;
+  }
+  updateJoke();
+  numerator.innerText = chuckWrapper.jokeIndex + 1;
+};
 
-goToPage("home");
+const nextJoke = () => {
+  if (chuckWrapper.jokeIndex < chuckWrapper.jokes.length - 1) {
+    chuckWrapper.jokeIndex++;
+  } else {
+    chuckWrapper.jokeIndex = 0;
+  }
+  updateJoke();
+  numerator.innerText = chuckWrapper.jokeIndex + 1;
+};
 
+const updateJoke = () => {
+  caroJoke.innerHTML = `<a id="prevJoke" onclick="prevJoke()">&#10094;</a>${chuckWrapper.jokes[chuckWrapper.jokeIndex]}<a id="nextJoke" onclick="nextJoke()">&#10095;</a>`;
+}
 
 /*function for responsive navbar menu*/
 
@@ -87,3 +99,35 @@ function responsiveMenu() {
     mobileMenu.className = "nav-links";
   }
 }
+
+/* function for show corousel */
+
+let slideIndex = 1;
+showSlides(slideIndex);
+
+/* next/previous controls */
+function plusSlides(number) {
+  showSlides(slideIndex += number);
+}
+
+/* thumbnail image controls */
+function currentSlide(number) {
+  showSlides(slideIndex = number);
+}
+
+function showSlides(number) {
+  let index;
+ 
+  if (number > slides.length) {slideIndex = 1}
+  if (number < 1) {slideIndex = slides.length}
+  for (index = 0; index < slides.length; index++) {
+    slides[index].style.display = "none";
+  }
+  for (index = 0; index < dots.length; index++) {
+    dots[index].className = dots[index].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "flex";
+  dots[slideIndex-1].className += " active";
+}
+
+goToPage("home");

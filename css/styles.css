@@ -519,8 +519,9 @@ input[type=checkbox]:checked:after {
     display:flex;
     flex-direction:row;
     align-items:center;
-    flex-wrap: wrap;
     justify-content: space-between;
+    gap: 2.5rem;
+    padding: 1rem 0 2.5rem;
 }
 
 .team-members p {
@@ -531,9 +532,18 @@ input[type=checkbox]:checked:after {
 .member {
     display: flex;
     align-items: center;
-    margin: auto;
     flex-direction: column;
-    padding: 5px 70px 0;
+    padding: 1.7rem 1.6rem;
+    background: rgba(0, 0, 0, 0.07);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    transition: all 265ms ease-out;
+}
+
+.member:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: rgba(0, 0, 0, 0.15);
+    transition: all 265ms ease-out;
 }
 
 .member h2, .member p {
@@ -552,18 +562,38 @@ input[type=checkbox]:checked:after {
     display: flex;
     align-items: center;
     padding-top: 10px;
+    justify-content: center;
 }
+
 
 .social-icons {
     padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .social-icons-box i {
-    color: #fff;
-    position: absolute;
-    top: 10px;
-    left: 13px;
+    align-items:center;
     transition: all 265ms ease-out;
+    justify-content: center;
+    padding: 0.4rem;
+    border-radius:6px;
+}
+
+/*github icon*/
+.github {
+    background-color: black;
+}
+
+/*twitter icon*/
+.twitter {
+    background-color:#2196F3;
+}
+
+/*linkedin icon*/
+.linkedin {
+    background-color:#0e63a7;
 }
 
 .social-icons li {
@@ -574,22 +604,13 @@ input[type=checkbox]:checked:after {
 
 .social-icons a {
     display: flex;
-    padding:0 2px;
+    padding: 2px 6px;
 }
 
 .social-icons a:before {
     content: " ";
-    width: 40px;
-    height: 40px;
-    border-radius: 20%;
     display:flex;
-    background: linear-gradient(45deg, #00B5F5, #002A8F);
     transition: all 265ms ease-out;
-}
-        
-.social-icons a:hover:before {
-    transform: scale(0);
-    transition: all 265ms ease-in;
 }
         
 .social-icons a:hover i {
@@ -828,8 +849,16 @@ footer a:hover {
 
     /*team section*/
 
+    .team-members {
+        flex-direction:column;
+    }
+
     .member {
-        padding: 15px 40px 30px;
+        padding: 1.8rem 2.4rem;
+    }
+
+    .member:hover {
+        padding: 2rem 2.8rem;
     }
 }
 
@@ -918,8 +947,13 @@ footer a:hover {
     /*team section*/
 
     .member {
-        padding: 15px 0 30px;
+        padding: 1.6rem 1.8rem;
     }
+
+    .member:hover {
+        padding: 1.8rem 2rem;
+    }
+
     .team-member-photo {
         max-width: 100%;
     }

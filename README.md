@@ -33,7 +33,7 @@ Deploy was made to [Github Pages](https://chingu-voyages.github.io/v42-toucans-t
 
 ## Team
 | Full Stack Developer   |      Product Owner      |  Front End Developer |
-|----------|:-------------:|------:|
+|:----------:|:-------------:|:------:|
 | <img src="/images/img-christopher.png" width="200"> |  <img src="/images/img-amanda.png" width="200"> | <img src="/images/img-michel.png" width="200"> |
 | [Chris Busse](https://github.com/gamingbuddhist) |   [Amanda Vieira](https://github.com/amandaalexandre)   |   [Michel Adelino](https://github.com/MichMatrix) |
 
